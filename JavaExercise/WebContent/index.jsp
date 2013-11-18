@@ -4,11 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="/css/index.css" type="text/css" />
-<link rel="shortcut icon" href="/image/c.png" type="image/x-icon" />
+<link rel="shortcut icon" href="/image/favorite.ico" type="image/x-icon" />
 <title>大连理工大学JAVA上机平台</title>
 </head>
 <body>
-
+	<%@ include file="/template/header.jsp" %>
 </body>
 </html>
