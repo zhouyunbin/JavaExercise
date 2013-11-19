@@ -13,21 +13,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Video;
 import net.sf.json.JSONObject;
-import datacontroller.NewsController;
-import model.News;
+import datacontroller.VideoController;
 
 /**
- * Servlet implementation class NewsHandler
+ * Servlet implementation class VideoHandler
  */
-@WebServlet("/admin/NewsHandler")
-public class NewsHandler extends HttpServlet {
+@WebServlet("/admin/VideoHandler")
+public class VideoHandler extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NewsHandler() {
+    public VideoHandler() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -45,17 +45,15 @@ public class NewsHandler extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String cmd=request.getParameter("cmd");
-		NewsController nc=new NewsController();
+		VideoController nc=new VideoController();
 		if(cmd.equals("add"))
 		{
-			News n=new News();
-			n.setTitle(request.getParameter("title"));
-			n.setAuthorid(1);
-			n.setCreatetime(new Date());
-			n.setContent(request.getParameter("editor1"));
-			
-			nc.addNews(n);
-			response.sendRedirect("/admin/newslist.jsp");
+			Video n=new Video();
+			n.setName(request.getParameter("title"));
+			n.setDescribe(request.getParameter("describe"));
+			n.setPath(request.getParameter("link"));
+			nc.addVideo(n);
+			response.sendRedirect("/admin/Videolist.jsp");
 			return;
 		}
 		else if(cmd.equals("list"))
@@ -64,14 +62,14 @@ public class NewsHandler extends HttpServlet {
 			List mapList = new ArrayList();  
 			int page=Integer.parseInt(request.getParameter("page"));
 			int rp=Integer.parseInt(request.getParameter("rp"));
-			List<News> li=nc.getListByColumn(page*rp-rp, rp);
+			List<Video> li=nc.getListByColumn(page*rp-rp, rp);
 			result.put("page", page);
 			result.put("total", li.size());
 			
 			 for(int i = 0; i < li.size(); i++) {  
 		            Map cellMap = new HashMap();    
-		            cellMap.put("id", li.get(i).getNewsid());    
-		            cellMap.put("cell", new Object [] {li.get(i).getTitle(),li.get(i).getCreatetime().toString()});       
+		            cellMap.put("id", li.get(i).getVideoid());    
+		            cellMap.put("cell", new Object [] {li.get(i).getName(),li.get(i).getDescribe()});       
 		            mapList.add(cellMap);    
 		        }    
 			 result.put("rows", mapList);    
@@ -82,9 +80,9 @@ public class NewsHandler extends HttpServlet {
 		else if(cmd.equals("delete"))
 		{
 			int id=Integer.parseInt(request.getParameter("informno"));
-			News u=new News();
-			u.setNewsid(id);
-			nc.deleteNews(u);
+			Video u=new Video();
+			u.setVideoid(id);
+			nc.deleteVideo(u);
 			response.getWriter().write("True");
 			return;
 		}

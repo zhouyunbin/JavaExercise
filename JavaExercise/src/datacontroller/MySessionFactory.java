@@ -40,7 +40,7 @@ public  class  MySessionFactory {
 		Session session=null;
 		try{
 			session = factory.openSession();
-			//�?��事务
+			//�?��事务
 			session.beginTransaction();
 			result =  session.createQuery(s).list();
 			//提交事务
@@ -66,7 +66,7 @@ public  class  MySessionFactory {
 		Session session=null;
 		try{
 			session = factory.openSession();
-			//�?��事务
+			//�?��事务
 			session.beginTransaction();
 			session.save(o);
 			//提交事务
@@ -90,7 +90,7 @@ public  class  MySessionFactory {
 		Session session=null;
 		try{
 			session = factory.openSession();
-			//�?��事务
+			//�?��事务
 			session.beginTransaction();
 			session.update(o);
 			//提交事务
@@ -115,9 +115,9 @@ public  class  MySessionFactory {
 		int count =0;
 		try{
 			session = factory.openSession();
-			//�?��事务
+			//�?��事务
 			session.beginTransaction();
-			Query q=session.createQuery("from "+cname);
+			Query q=session.createQuery("select count(u) from "+cname+" as u");
 			count = ((Number)q.uniqueResult()).intValue();  
 			
 			//提交事务
@@ -144,7 +144,7 @@ public  class  MySessionFactory {
 		List<Object> result=null;
 		try{
 			session = factory.openSession();
-			//�?��事务
+			//�?��事务
 			session.beginTransaction();
 			result=session.createQuery("from "+cname+" where "+prop+"= :value").setString("value", value).list();
 			//提交事务
@@ -170,7 +170,7 @@ public  class  MySessionFactory {
 		List<Object> result=null;
 		try{
 			session = factory.openSession();
-			//�?��事务
+			//�?��事务
 			session.beginTransaction();
 			Query q=session.createQuery("from "+cname+" x where "+prop+"= :value" + " order by x."+column).setString("value", value);
 			q.setMaxResults(size);
@@ -199,7 +199,7 @@ public  class  MySessionFactory {
 		List<Object> result=null;
 		try{
 			session = factory.openSession();
-			//�?��事务
+			//�?��事务
 			session.beginTransaction();
 			Query q=session.createQuery("from "+cname+ " x order by x."+column+" desc");
 			q.setMaxResults(size);
@@ -227,7 +227,7 @@ public  class  MySessionFactory {
 		Session session=null;
 		try{
 			session = factory.openSession();
-			//�?��事务
+			//�?��事务
 			session.beginTransaction();
 			session.delete(o);
 			//提交事务

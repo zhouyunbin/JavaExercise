@@ -21,10 +21,14 @@
             url: '/admin/NewsHandler?cmd=list',
             dataType: 'json',
             colModel: [
-                       { display: '标题', name: 'title', width: 400, sortable: true, align: 'center' },
-                       { display: '发布时间', name: 'createtime', width: 400, sortable: true, align: 'left' },
+                { display: '标题', name: 'title', width: 400, sortable: true, align: 'center' },
+                { display: '发布时间', name: 'createtime', width: 400, sortable: true, align: 'left' },
             ],
-            sortname: "time",
+            buttons: [
+                      { name: '删除', bclass: 'delete', onpress: activ },
+                      { separator: true }
+                    ],
+            sortname: "createtime",
             sortorder: "desc",
             singleSelect: true,
             usepager: true,
@@ -53,6 +57,30 @@
         {
             $(p).css("cursor","pointer");
         }
+        function activ(com, grid) {
+            var id = $('.trSelected', grid).attr("id").replace("row", "");
+        
+            if (com == '删除') {
+                var conf = confirm('删除 ' + $('.trSelected').children('td').eq(0).children('div').html() + ' 吗?')
+                if (conf) {
+                    $.each($('.trSelected', grid),
+                        function (key, value) {
+                            $.post('/admin/NewsHandler?cmd=delete&informno=' + id,
+                                 function (result) {
+                                     // when ajax returns (callback), update the grid to refresh the data
+                                     $("#flex1").flexReload();
+                                     if (result == "True") {
+                                         alert("删除成功！");
+                                     }
+                                     else {
+                                         alert("删除失败！");
+                                     }
+                                 });
+                        });
+                }
+            }
+
+        };
 </script>
 	</div>
 	<%@ include file="/template/footer.jsp" %>
