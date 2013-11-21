@@ -49,8 +49,8 @@ public class VideoHandler extends HttpServlet {
 		if(cmd.equals("add"))
 		{
 			Video n=new Video();
-			n.setName(request.getParameter("title"));
-			n.setDescribe(request.getParameter("describe"));
+			n.setVname(request.getParameter("title"));
+			n.setVdescribe(request.getParameter("describe"));
 			n.setPath(request.getParameter("link"));
 			nc.addVideo(n);
 			response.sendRedirect("/admin/Videolist.jsp");
@@ -69,7 +69,7 @@ public class VideoHandler extends HttpServlet {
 			 for(int i = 0; i < li.size(); i++) {  
 		            Map cellMap = new HashMap();    
 		            cellMap.put("id", li.get(i).getVideoid());    
-		            cellMap.put("cell", new Object [] {li.get(i).getName(),li.get(i).getDescribe()});       
+		            cellMap.put("cell", new Object [] {li.get(i).getVname(),li.get(i).getVdescribe()});       
 		            mapList.add(cellMap);    
 		        }    
 			 result.put("rows", mapList);    

@@ -18,7 +18,7 @@
 	    <p>视频链接：<input  name="link" size="100" style="margin:2px" /></p>
 	    <p>例如:"http://player.youku.com/player.php/sid/XNjM3NDEwMDky/v.swf"，将视频上传至土豆，
 	    优酷等视频网站，获取其flash地址即可</p>
-	    <a class="button white" onclick="$(news).submit();">提交</a></div>
+	    <a class="button white" onclick="$(news).submit();">提交</a>
    </form>
 	</div>
 	<%@ include file="/template/footer.jsp" %>

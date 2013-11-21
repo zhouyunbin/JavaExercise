@@ -2,8 +2,8 @@ package model;
 
 public class Video {
 	private int videoid;
-	private String name;
-	private String describe;
+	private String vname;
+	private String vdescribe;
 	private String path;
 	/**
 	 * @return the videoid
@@ -18,28 +18,28 @@ public class Video {
 		this.videoid = videoid;
 	}
 	/**
-	 * @return the name
+	 * @return the vname
 	 */
-	public String getName() {
-		return name;
+	public String getVname() {
+		return vname;
 	}
 	/**
-	 * @param name the name to set
+	 * @param vname the vname to set
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setVname(String vname) {
+		this.vname = vname;
 	}
 	/**
-	 * @return the describe
+	 * @return the vdescribe
 	 */
-	public String getDescribe() {
-		return describe;
+	public String getVdescribe() {
+		return vdescribe;
 	}
 	/**
-	 * @param describe the describe to set
+	 * @param vdescribe the vdescribe to set
 	 */
-	public void setDescribe(String describe) {
-		this.describe = describe;
+	public void setVdescribe(String vdescribe) {
+		this.vdescribe = vdescribe;
 	}
 	/**
 	 * @return the path
@@ -54,3 +54,4 @@ public class Video {
 		this.path = path;
 	}
 }
+	

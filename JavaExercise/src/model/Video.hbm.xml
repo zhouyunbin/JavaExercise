@@ -6,8 +6,8 @@
 <id name="videoid">
 <generator class="native"/>
 </id>
-<property name="name"/>
-<property name="describe"/>
+<property name="vname"/>
+<property name="vdescribe"/>
 <property name="path"/>
 </class>
 </hibernate-mapping>

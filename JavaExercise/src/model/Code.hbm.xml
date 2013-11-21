@@ -6,8 +6,9 @@
 <id name="codeid">
 <generator class="native"/>
 </id>
-<property name="describe"/>
-<property name="content"/>
-<property name="answer"/>
+<property name="title"/>
+<property name="cdescribe"/>
+<property name="ccontent"/>
+<property name="canswer"/>
 </class>
 </hibernate-mapping>

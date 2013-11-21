@@ -2,9 +2,10 @@ package model;
 
 public class Code {
 	private int codeid;
-	private String describe;
-	private String content;
-	private String answer;
+	private String cdescribe;
+	private String ccontent;
+	private String canswer;
+	private String title;
 	/**
 	 * @return the codeid
 	 */
@@ -17,41 +18,56 @@ public class Code {
 	public void setCodeid(int codeid) {
 		this.codeid = codeid;
 	}
+	
+	
+	
 	/**
-	 * @return the describe
+	 * @return the title
 	 */
-	public String getDescribe() {
-		return describe;
+	public String getTitle() {
+		return title;
 	}
 	/**
-	 * @param describe the describe to set
+	 * @param title the title to set
 	 */
-	public void setDescribe(String describe) {
-		this.describe = describe;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	/**
-	 * @return the content
+	 * @return the cdescribe
 	 */
-	public String getContent() {
-		return content;
+	public String getCdescribe() {
+		return cdescribe;
 	}
 	/**
-	 * @param content the content to set
+	 * @param cdescribe the cdescribe to set
 	 */
-	public void setContent(String content) {
-		this.content = content;
+	public void setCdescribe(String cdescribe) {
+		this.cdescribe = cdescribe;
 	}
 	/**
-	 * @return the answer
+	 * @return the ccontent
 	 */
-	public String getAnswer() {
-		return answer;
+	public String getCcontent() {
+		return ccontent;
 	}
 	/**
-	 * @param answer the answer to set
+	 * @param ccontent the ccontent to set
 	 */
-	public void setAnswer(String answer) {
-		this.answer = answer;
+	public void setCcontent(String ccontent) {
+		this.ccontent = ccontent;
+	}
+	/**
+	 * @return the canswer
+	 */
+	public String getCanswer() {
+		return canswer;
+	}
+	/**
+	 * @param canswer the canswer to set
+	 */
+	public void setCanswer(String canswer) {
+		this.canswer = canswer;
 	}
 
 }
