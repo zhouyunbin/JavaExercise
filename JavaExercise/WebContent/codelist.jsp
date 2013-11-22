@@ -14,7 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="/js/Flexigrid-master/css/flexigrid.css">
 	<link rel="stylesheet" type="text/css" href="/js/Flexigrid-master/demo/style.css">
 	<script type="text/javascript" src="/js/Flexigrid-master/js/flexigrid.js"></script>
-	<div style="width: 950px;margin: 0 auto;height:480px">
+	<div style="width: 950px;margin: 0 auto;height:380px">
 	<div style="margin:15px"> <table id="flex1" style="display:none"></table> </div>       
 	    <script type="text/javascript">
         $("#flex1").flexigrid({

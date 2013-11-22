@@ -1,6 +1,10 @@
 package mservlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONObject;
+import model.News;
 import model.Question;
 import datacontroller.QuestionController;
 
@@ -53,6 +59,55 @@ public class QuestionHandler extends HttpServlet {
 			response.getWriter().write("True");
 			return;
 		
+		}
+		else if(cmd.equals("modify"))
+		{
+			QuestionController qc=new QuestionController();
+			Question q=new Question();
+			q.setTitle(request.getParameter("editor1"));
+			q.setSelectionA(request.getParameter("editor2"));
+			q.setSelectionB(request.getParameter("editor3"));
+			q.setSelectionC(request.getParameter("editor4"));
+			q.setSelectionD(request.getParameter("editor5"));
+			q.setRight_answer(request.getParameter("rightanswer"));
+			q.setQuestionid(Integer.parseInt(request.getParameter("questionid")));
+			qc.updateQuestion(q);
+			response.getWriter().write("True");
+			return;
+		
+		}
+		else if(cmd.equals("list"))
+		{
+			QuestionController qc=new QuestionController();
+			Map result=new HashMap();
+			List mapList = new ArrayList();  
+			int page=Integer.parseInt(request.getParameter("page"));
+			int rp=Integer.parseInt(request.getParameter("rp"));
+			List<Question> li=qc.getListByColumn(page*rp-rp, rp);
+			result.put("page", page);
+			result.put("total", li.size());
+			
+			 for(int i = 0; i < li.size(); i++) {  
+		            Map cellMap = new HashMap();    
+		            cellMap.put("id", li.get(i).getQuestionid());    
+		            cellMap.put("cell", new Object [] {li.get(i).getTitle()});       
+		            mapList.add(cellMap);    
+		        }    
+			 result.put("rows", mapList);    
+			 JSONObject object = JSONObject.fromObject(result);
+			 response.getWriter().write(object.toString());
+			 return;
+		}
+		
+		else if(cmd.equals("delete"))
+		{
+			QuestionController qc=new QuestionController();
+			int id=Integer.parseInt(request.getParameter("informno"));
+			Question u=new Question();
+			u.setQuestionid(id);
+			qc.deleteQuestion(u);
+			response.getWriter().write("True");
+			return;
 		}
 	}
 

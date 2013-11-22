@@ -1,0 +1,16 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="model">
+<class name="Stuanswer" table="java_stuanswer">
+<id name="resultid">
+<generator class="native"/>
+</id>
+<property name="studentid"/>
+<property name="questionid"/>
+<property name="questiontype"/>
+<property name="isright"/>
+<property name="studentanswer"/>
+
+</class>
+</hibernate-mapping>

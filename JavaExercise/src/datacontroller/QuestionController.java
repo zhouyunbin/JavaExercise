@@ -46,4 +46,10 @@ public class QuestionController {
 		if(li.size()>0) return li.get(0);
 		return null;
 	}
+	public int getMaxQuestionId()
+	{
+		List<Question> li=(List<Question>)(Object)MySessionFactory.getByColumn("Question", "questionid", 0, 1);
+		if(li.size()>0) return li.get(0).getQuestionid();
+		else return 0;
+	}
 }
