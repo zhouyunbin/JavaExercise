@@ -89,7 +89,7 @@ public class CompileAndRunJavaFile extends HttpServlet {
 			int rp=Integer.parseInt(req.getParameter("rp"));
 			List<Code> li=nc.getListByColumn(page*rp-rp, rp);
 			result.put("page", page);
-			result.put("total", li.size());
+			result.put("total", nc.getCodeNumber());
 			
 			 for(int i = 0; i < li.size(); i++) {  
 		            Map cellMap = new HashMap();    

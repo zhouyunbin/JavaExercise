@@ -6,8 +6,9 @@
 <id name="studentid">
 <generator class="native"/>
 </id>
-<property name="name"/>
+<property name="sname"/>
+<property name="username"/>
 <property name="password"/>
-<property name="email"/>
+<property name="semail"/>
 </class>
 </hibernate-mapping>

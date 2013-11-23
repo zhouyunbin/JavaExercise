@@ -64,7 +64,7 @@ public class VideoHandler extends HttpServlet {
 			int rp=Integer.parseInt(request.getParameter("rp"));
 			List<Video> li=nc.getListByColumn(page*rp-rp, rp);
 			result.put("page", page);
-			result.put("total", li.size());
+			result.put("total", nc.getVideoNumber());
 			
 			 for(int i = 0; i < li.size(); i++) {  
 		            Map cellMap = new HashMap();    

@@ -18,9 +18,9 @@ overflow: hidden;
 line-height: 24px;
 border-bottom: 2px solid #111;font-size: 14px;
 color: #45484b;}
-.sidespan {float:left;overflow: hidden; text-overflow:ellipsis;white-space:nowrap;width:260px;font-size: 13px;
+.sidespan {float:left;overflow: hidden; text-overflow:ellipsis;white-space:nowrap;width:220px;font-size: 13px;
 margin-top:6px}
-.sidetimespan {float:right;font-size:13px;width:46px;overflow: hidden;margin-top:6px;}
+.sidetimespan {float:right;font-size:13px;width:86px;overflow: hidden;margin-top:6px;}
 .newsul{
 	margin-left:5px;
 }

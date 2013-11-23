@@ -2,9 +2,10 @@ package model;
 
 public class Student {
 	private int studentid;
-	private String name;
+	private String sname;
 	private String password;
-	private String email;
+	private String semail;
+	private String username;
 	/**
 	 * @return the studentid
 	 */
@@ -17,18 +18,7 @@ public class Student {
 	public void setStudentid(int studentid) {
 		this.studentid = studentid;
 	}
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
+	
 	/**
 	 * @return the password
 	 */
@@ -42,15 +32,41 @@ public class Student {
 		this.password = password;
 	}
 	/**
-	 * @return the email
+	 * @return the sname
 	 */
-	public String getEmail() {
-		return email;
+	public String getSname() {
+		return sname;
 	}
 	/**
-	 * @param email the email to set
+	 * @param sname the sname to set
 	 */
-	public void setEmail(String email) {
-		this.email = email;
+	public void setSname(String sname) {
+		this.sname = sname;
 	}
+	/**
+	 * @return the semail
+	 */
+	public String getSemail() {
+		return semail;
+	}
+	/**
+	 * @param semail the semail to set
+	 */
+	public void setSemail(String semail) {
+		this.semail = semail;
+	}
+	/**
+	 * @return the username
+	 */
+	public String getUsername() {
+		return username;
+	}
+	/**
+	 * @param username the username to set
+	 */
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	
 }

@@ -85,7 +85,7 @@ public class QuestionHandler extends HttpServlet {
 			int rp=Integer.parseInt(request.getParameter("rp"));
 			List<Question> li=qc.getListByColumn(page*rp-rp, rp);
 			result.put("page", page);
-			result.put("total", li.size());
+			result.put("total", qc.getQuestionNumber());
 			
 			 for(int i = 0; i < li.size(); i++) {  
 		            Map cellMap = new HashMap();    
