@@ -21,8 +21,10 @@
 		NewsController nc=new NewsController(); 
 		int id=Integer.parseInt(request.getParameter("informno"));
 		News n=nc.getNewsbyId(id);
-		
+		if(n==null){
 		%>
+			<jsp:forward page="/404.html"/>
+			<%} %>
 	<h1><center><%=n.getTitle() %></center></h1><br/>
 	<h3><center>发布时间:<%=n.getCreatetime() %> 作者:<%=nc.getAuthorByid(n.getAuthorid()) %></center></h3>
 	<hr/>

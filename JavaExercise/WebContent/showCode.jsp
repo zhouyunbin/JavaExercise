@@ -22,8 +22,10 @@
 		CodeController nc=new CodeController(); 
 		int id=Integer.parseInt(request.getParameter("informno"));
 		Code n=nc.getCodebyId(id);
-		
+		if(n==null){
 		%>
+			<jsp:forward page="/404.html"/>
+			<%} %>
 	<h1><center><%=n.getTitle() %></center></h1><br/>
 	<hr/>
 	<center><p style="margin:10px">说明:<%=n.getCdescribe() %></p></center>

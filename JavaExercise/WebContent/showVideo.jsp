@@ -21,8 +21,12 @@
 		VideoController nc=new VideoController(); 
 		int id=Integer.parseInt(request.getParameter("informno"));
 		Video n=nc.getVideobyId(id);
-		
+		if(n==null){
 		%>
+			<jsp:forward page="/404.html"/>
+			<%} %>
+
+		
 	<h1><center><%=n.getVname() %></center></h1><br/>
 	<hr/><center>
 	<embed src="<%=n.getPath() %>" 
