@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="/js/Flexigrid-master/demo/style.css">
 	<script type="text/javascript" src="/js/Flexigrid-master/js/flexigrid.js"></script>
 	<div style="width: 950px;margin: 0 auto;height:480px">
-	<div style="margin:15px"> <table id="flex1" style="display:none"></table> </div>       
+	<div style="margin:0px"> <table id="flex1" style="display:none"></table> </div>     
 	    <script type="text/javascript">
         $("#flex1").flexigrid({
             url: '/admin/QuestionHandler?cmd=list',
@@ -14,6 +14,9 @@
                 { display: '题目', name: 'title', width: 800, sortable: true, align: 'center' }
             ],
             buttons: [
+						{ name: '添加', bclass: 'add', onpress: activ },
+						{ name: '打开', bclass: 'edit', onpress: activ },
+						{ name: '修改', bclass: 'add', onpress: activ },
                       { name: '删除', bclass: 'delete', onpress: activ },
                       { separator: true }
                     ],
@@ -28,7 +31,6 @@
             width: 900,
             onSubmit: addFormData,
             height: 300,
-            onSClick: selectAccount,
             onMouseover: mousechang1
         });
         function addFormData() {
@@ -68,6 +70,19 @@
                         });
                 }
             }
+            else if(com =='添加')
+           	{
+           		window.open('/admin/addquestion.jsp');
+           	}
+            else if(com =='修改')
+           	{
+           		window.open('/admin/modifyquestion.jsp?informno='+id);
+           	}
+            else if(com =='打开')
+           	{
+           		window.open('/question.jsp?informno='+id);
+           	}
+            
 
         };
 </script>

@@ -28,7 +28,7 @@
             sortorder: "desc",
             singleSelect: true,
             usepager: true,
-            title: "新闻通知",
+            title: "视频列表",
             useRp: true,
             rp: 15,
             showTableToggleBtn: true,

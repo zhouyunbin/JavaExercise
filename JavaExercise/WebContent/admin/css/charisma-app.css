@@ -1,0 +1,110 @@
+@font-face {
+  font-family: 'Shojumaru';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Shojumaru'), local('Shojumaru-Regular'), url(./face.woff) format('woff');
+}
+
+select{
+background-color:#fff;
+}
+
+
+img.grayscale{
+-webkit-filter: grayscale(1);
+-webkit-filter: grayscale(100%);
+-moz-filter: grayscale(100%);
+-ms-filter: grayscale(100%);
+-o-filter: grayscale(100%);
+/*filter: url(desaturate.svg#grayscale);
+filter: gray;
+filter: grayscale(100%); */
+}
+
+
+
+div.center,p.center,img.center{
+margin-left: auto !important;
+margin-right: auto !important;
+float:none !important;
+display: block;
+text-align:center;
+}
+
+
+.sidebar-nav{
+min-height:0;
+box-shadow: 0 0 10px #BDBDBD;
+-webkit-box-shadow: 0 0 10px #BDBDBD;
+-moz-box-shadow: 0 0 10px #BDBDBD;
+border-radius: 5px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+margin-bottom: 0;
+padding-bottom:0;
+}
+.sidebar-nav > ul > li:not(.nav-header){
+margin-right:-2px;
+margin-left:-2px;
+}
+
+.brand{
+font-family: 'Shojumaru', cursive, Arial, serif; 
+letter-spacing:2px;
+text-shadow:1px 1px 5px rgba(0, 0, 0, 0.5);
+width:366px;
+}
+.brand img{
+float:left;
+height:20px;
+width:20px;
+margin-right:5px;
+}
+.brand span{
+float:left;
+}
+
+.navbar-search{
+margin-left:10px;
+}
+.navbar-inner{
+border-radius:0 0 10px 10px;
+-webkit-border-radius:0 0 10px 10px;
+-moz-border-radius:0 0 10px 10px;
+padding-top:5px; 
+padding-bottom:5px; 
+}
+
+ul.ajax-loaders li{
+display:inline-block;
+list-style:none;
+padding:10px;
+}
+ul.ajax-loaders{
+min-height:80px;
+}
+.bs-icons li{
+list-style:none;
+}
+#for-is-ajax{
+padding-left: 12px;
+cursor:pointer;
+}
+#loading{
+margin-top: 20px;
+width:128px;
+font-weight: bold;
+}
+#loading div.center{
+margin-top:10px;
+height:15px;
+width:128px;
+background:url(/admin/img/ajax-loaders/ajax-loader-6.gif);
+}
+.pull-left{
+float:left !important;
+}
+.pull-right{
+float:right !important;
+}
+

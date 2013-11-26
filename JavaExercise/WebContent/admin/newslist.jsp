@@ -16,6 +16,8 @@
                 { display: '发布时间', name: 'createtime', width: 400, sortable: true, align: 'left' },
             ],
             buttons: [
+						{ name: '添加', bclass: 'add', onpress: activ },
+						{ name: '打开', bclass: 'edit', onpress: activ },
                       { name: '删除', bclass: 'delete', onpress: activ },
                       { separator: true }
                     ],
@@ -30,7 +32,6 @@
             width: 900,
             onSubmit: addFormData,
             height: 300,
-            onSClick: selectAccount,
             onMouseover: mousechang1
         });
         function addFormData() {
@@ -70,6 +71,14 @@
                         });
                 }
             }
+            else if(com =='添加')
+           	{
+           		window.open('/admin/addnews.jsp');
+           	}
+            else if(com =='打开')
+           	{
+           		window.open('/shownews.jsp?informno='+id);
+           	}
 
         };
 </script>

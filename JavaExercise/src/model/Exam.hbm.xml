@@ -7,7 +7,8 @@
 <generator class="native"/>
 </id>
 <property name="examtitle"/>
-<property name="describe"/>
+<property name="edescribe"/>
 <property name="createtime"/>
+<property name="examtime"/>
 </class>
 </hibernate-mapping>

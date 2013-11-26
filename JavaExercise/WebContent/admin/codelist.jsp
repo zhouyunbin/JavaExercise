@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="/js/Flexigrid-master/demo/style.css">
 	<script type="text/javascript" src="/js/Flexigrid-master/js/flexigrid.js"></script>
 	<div style="width: 950px;margin: 0 auto;height:480px">
-	<div style="margin:15px"> <table id="flex1" style="display:none"></table> </div>       
+	<div style="margin:0px"> <table id="flex1" style="display:none"></table> </div>      
 	    <script type="text/javascript">
         $("#flex1").flexigrid({
             url: '/admin/CompileAndRunJavaFile?cmd=list',
@@ -15,6 +15,8 @@
                 { display: '视频描述', name: 'describe', width: 400, sortable: true, align: 'left' },
             ],
             buttons: [
+						{ name: '添加', bclass: 'add', onpress: activ },
+						{ name: '打开', bclass: 'edit', onpress: activ },
                       { name: '删除', bclass: 'delete', onpress: activ },
                       { separator: true }
                     ],
@@ -29,7 +31,6 @@
             width: 900,
             onSubmit: addFormData,
             height: 300,
-            onSClick: selectAccount,
             onMouseover: mousechang1
         });
         function addFormData() {
@@ -69,6 +70,15 @@
                         });
                 }
             }
+            else if(com =='添加')
+           	{
+           		window.open('/admin/addcode.jsp');
+           	}
+            else if(com =='打开')
+           	{
+           		window.open('/showCode.jsp?informno='+id);
+           	}
+
 
         };
 </script>
