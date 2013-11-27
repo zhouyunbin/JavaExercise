@@ -3,6 +3,7 @@ package model;
 public class Stuanswer {
 	private int resultid;
 	private int studentid;
+	private int examid;
 	private int questionid;
 	private int questiontype;
 	private int isright;
@@ -31,18 +32,7 @@ public class Stuanswer {
 	public void setStudentid(int studentid) {
 		this.studentid = studentid;
 	}
-	/**
-	 * @return the questionid
-	 */
-	public int getQuestionid() {
-		return questionid;
-	}
-	/**
-	 * @param questionid the questionid to set
-	 */
-	public void setQuestionid(int questionid) {
-		this.questionid = questionid;
-	}
+	
 	/**
 	 * @return the questiontype
 	 */
@@ -78,6 +68,31 @@ public class Stuanswer {
 	 */
 	public void setStudentanswer(String studentanswer) {
 		this.studentanswer = studentanswer;
+	}
+	
+	/**
+	 * @return the questionid
+	 */
+	public int getQuestionid() {
+		return questionid;
+	}
+	/**
+	 * @param questionid the questionid to set
+	 */
+	public void setQuestionid(int questionid) {
+		this.questionid = questionid;
+	}
+	/**
+	 * @return the examid
+	 */
+	public int getExamid() {
+		return examid;
+	}
+	/**
+	 * @param examid the examid to set
+	 */
+	public void setExamid(int examid) {
+		this.examid = examid;
 	}
 
 }

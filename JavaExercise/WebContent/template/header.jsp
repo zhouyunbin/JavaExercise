@@ -11,7 +11,7 @@
 <li><a href="/newslist.jsp" title="新闻公告"><span>新闻公告</span></a></li>
 <li><a href="/videolist.jsp" title="上机视频"><span>上机视频</span></a></li>
 <li><a href="/codelist.jsp" title="在线code"><span>在线code</span></a></li>
-<li><a href="/questionlist.jsp" title="在线答题"><span>在线答题</span></a></li>
+<li><a href="/examlist.jsp" title="在线测验"><span>在线测验</span></a></li>
 <li><a href="#" title="F&Q"><span>F&Q</span></a></li>
 <% 
 	Student s=(Student)session.getAttribute("student");

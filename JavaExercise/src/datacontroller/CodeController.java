@@ -3,6 +3,7 @@ package datacontroller;
 import java.util.List;
 
 import model.Code;
+import model.Exam;
 
 public class CodeController {
 	public void addCode(Code u)
@@ -46,4 +47,12 @@ public class CodeController {
 		if(li.size()>0) return li.get(0);
 		return null;
 	}
+	
+	public int getMaxCodeId()
+	{
+		List<Code> li=(List<Code>)(Object)MySessionFactory.getByColumn("Code", "codeid", 0, 1);
+		if(li.size()>0) return li.get(0).getCodeid();
+		else return 0;
+	}
+	
 }

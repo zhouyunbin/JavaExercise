@@ -49,9 +49,8 @@
             $(p).css("cursor","pointer");
         }
         function activ(com, grid) {
-            var id = $('.trSelected', grid).attr("id").replace("row", "");
-        
             if (com == '删除') {
+            	var id = $('.trSelected', grid).attr("id").replace("row", "");
                 var conf = confirm('删除 ' + $('.trSelected').children('td').eq(0).children('div').html() + ' 吗?')
                 if (conf) {
                     $.each($('.trSelected', grid),
@@ -76,6 +75,7 @@
            	}
             else if(com =='打开')
            	{
+            	var id = $('.trSelected', grid).attr("id").replace("row", "");
            		window.open('/showVideo.jsp?informno='+id);
            	}
 

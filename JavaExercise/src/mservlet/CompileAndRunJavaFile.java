@@ -20,7 +20,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONObject;
 import datacontroller.CodeController;
+import datacontroller.QuestionController;
+import datacontroller.ScoreController;
+import datacontroller.StuanswerController;
 import model.Code;
+import model.Exam;
+import model.Question;
+import model.Stuanswer;
+import model.Student;
 import model.Video;
 
 @WebServlet("/admin/CompileAndRunJavaFile")
@@ -68,17 +75,36 @@ public class CompileAndRunJavaFile extends HttpServlet {
 			return;
 		}
 		else if (cmd.equals("execute")) {
+			Student stu=(Student) req.getSession().getAttribute("student");
+			Exam exam=(Exam) req.getSession().getAttribute("exam");
+			ScoreController sc=new ScoreController();
+			if(!sc.canExam(stu.getStudentid(), exam.getExamid()))
+			{
+				resp.getWriter().write("False");
+				return;		
+			}
 			String id=req.getParameter("codeid");
 			CodeController nc=new CodeController();
 			Code c=nc.getCodebyId(Integer.parseInt(id));
-			
+			int isright;
 			String result=CompileAndRun(req,resp);
 			if(result.equals(c.getCanswer()))
 			{
-				resp.getWriter().write("run successful!");
+				isright=1;
 			}
-			else resp.getWriter().write(result+" "+c.getCanswer());
-			return;
+			else isright=0;
+			
+			StuanswerController eic=new StuanswerController();
+			Stuanswer stuanswer=new Stuanswer();
+			stuanswer.setExamid(exam.getExamid());
+			stuanswer.setQuestionid(c.getCodeid());
+			stuanswer.setIsright(isright);
+			stuanswer.setQuestiontype(2);
+			stuanswer.setStudentanswer(result);
+			stuanswer.setStudentid(stu.getStudentid());
+			eic.addStuanswer(stuanswer);
+			resp.getWriter().write("True");
+			return;			
 		}
 		else if(cmd.equals("list"))
 		{

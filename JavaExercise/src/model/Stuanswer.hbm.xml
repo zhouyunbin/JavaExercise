@@ -8,6 +8,7 @@
 </id>
 <property name="studentid"/>
 <property name="questionid"/>
+<property name="examid"/>
 <property name="questiontype"/>
 <property name="isright"/>
 <property name="studentanswer"/>
