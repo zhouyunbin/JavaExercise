@@ -21,7 +21,6 @@ public class UserController {
 	
 	public void updateUser(User u)
 	{
-		u.setPassword(MD5(u.getPassword()));
 		MySessionFactory.executeUpdate(u);
 	}
 	

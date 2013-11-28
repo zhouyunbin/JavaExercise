@@ -40,7 +40,7 @@
             showTableToggleBtn: true,
             width: 900,
             onSubmit: addFormData,
-            height: 300,
+            height: 270,
             onMouseover: mousechang1
         });
         function addFormData() {

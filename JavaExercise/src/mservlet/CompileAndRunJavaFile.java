@@ -83,9 +83,16 @@ public class CompileAndRunJavaFile extends HttpServlet {
 				resp.getWriter().write("False");
 				return;		
 			}
+			if(!sc.canExam(stu.getStudentid(), exam.getExamid()))
+			{
+				resp.getWriter().write("False");
+				return;		
+			}
 			String id=req.getParameter("codeid");
 			CodeController nc=new CodeController();
 			Code c=nc.getCodebyId(Integer.parseInt(id));
+			StuanswerController eic=new StuanswerController();
+			
 			int isright;
 			String result=CompileAndRun(req,resp);
 			if(result.equals(c.getCanswer()))
@@ -94,15 +101,24 @@ public class CompileAndRunJavaFile extends HttpServlet {
 			}
 			else isright=0;
 			
-			StuanswerController eic=new StuanswerController();
-			Stuanswer stuanswer=new Stuanswer();
-			stuanswer.setExamid(exam.getExamid());
-			stuanswer.setQuestionid(c.getCodeid());
-			stuanswer.setIsright(isright);
-			stuanswer.setQuestiontype(2);
-			stuanswer.setStudentanswer(result);
-			stuanswer.setStudentid(stu.getStudentid());
-			eic.addStuanswer(stuanswer);
+			Stuanswer stuanswer=eic.getByStuidandExamidandQuestionid(stu.getStudentid(), exam.getExamid(), c.getCodeid(), 2);
+			if(stuanswer==null)
+			{
+				stuanswer=new Stuanswer();
+				stuanswer.setExamid(exam.getExamid());
+				stuanswer.setQuestionid(c.getCodeid());
+				stuanswer.setIsright(isright);
+				stuanswer.setQuestiontype(2);
+				stuanswer.setStudentanswer(result);
+				stuanswer.setStudentid(stu.getStudentid());
+				eic.addStuanswer(stuanswer);
+			}
+			else
+			{
+				stuanswer.setIsright(isright);
+				stuanswer.setStudentanswer(result);
+				eic.updateStuanswer(stuanswer);
+			}
 			resp.getWriter().write("True");
 			return;			
 		}

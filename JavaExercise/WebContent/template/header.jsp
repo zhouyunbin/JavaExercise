@@ -18,7 +18,7 @@
 	if(s!=null)
 	{
 %>
-<li><a href="#" title="F&Q"><span>欢迎您，<%=s.getSname() %></span></a></li>
+<li><a href="/student/stumanage.jsp" title="F&Q"><span>欢迎您，<%=s.getSname() %></span></a></li>
 <% } %>
 </ul>
 <div class="menu_nav_right">
