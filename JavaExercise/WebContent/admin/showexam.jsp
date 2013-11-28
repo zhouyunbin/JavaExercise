@@ -12,45 +12,56 @@
 <body>
 	<%@ include file="/template/header.jsp" %>
 	<div class="maindiv" >
+	<%@ page import="datacontroller.ExamController"%>
+	<%@ page import="datacontroller.ExamitemController"%>
+	<%@ page import="datacontroller.ExamcodeController"%>
+		<%@ page import="model.Exam"%>
+		<%@ page import="model.Examitem"%>
+		<%@ page import="model.Examcode"%>
+		<%@ page import="java.util.List"%>
+		<%
+		ExamController ec=new ExamController(); 
+		Exam e=ec.getExambyId(Integer.parseInt(request.getParameter("informno")));
+		
+		%>
    <form id="news" method="post" action="/admin/CompileAndRunJavaFile?cmd=confirm" style="margin:20px">
-	    <p>考试标题：<input  name="title" size="100" style="margin:2px" /></p>
-	    <p>考试说明：<textarea  name="describe"  style="margin:2px;height:50px;width:630px;" /></textarea></p>
-	    <p>考试时长(分钟)：<input name="examtime" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"></p>
+	    <p>考试标题：<%=e.getExamtitle() %></p>
+	    <p>考试说明：<%=e.getEdescribe() %></p>
+	    <p>考试时长(分钟)：<%=e.getExamtime() %></p>
 	    <div style="width:100%;height:350px">
 	    <%@ page import="datacontroller.QuestionController"%>
 		<%@ page import="model.Question"%>
-		<%@ page import="java.util.List"%>
 		<%
+		ExamitemController eic=new ExamitemController();
 		QuestionController nc=new QuestionController(); 
-		List<Question> li=nc.getListByColumn(0, nc.getQuestionNumber());
+		List<Examitem> lei=eic.getByExamid(e.getExamid());
 		
 		%>
 	    <div style="float:left"><p>单选题:</p>
 	    <div style="overflow-y:scroll;width:400px;height:300px" class="myscroll">
-	    <% for(int i=0;i<li.size();i++) {%>
-	    <div class="item"><input type="checkbox" name="q_<%=li.get(i).getQuestionid()%>" value="<%=li.get(i).getQuestionid()%>"><%=li.get(i).getTitle()%><br/></div>
+	    <% for(int i=0;i<lei.size();i++) {%>
+	    <div class="item"><%=nc.getQuestionbyId(lei.get(i).getQuestionid()).getTitle()%><br/></div>
 	    <% }%>
 	  
 	    
 	    </div></div>
 	     <%@ page import="datacontroller.CodeController"%>
 		<%@ page import="model.Code"%>
-		<%@ page import="java.util.List"%>
 		<%
 		CodeController cc=new CodeController(); 
-		List<Code> lc=cc.getListByColumn(0, cc.getCodeNumber());
+		ExamcodeController ecc=new ExamcodeController();
+		List<Examcode> lc=ecc.getByExamid(e.getExamid());
 		
 		%>
 	    <div style="float:left;margin-left:10px"><p>编程题:</p>
 	    <div style="overflow-y:scroll;width:400px;height:300px" class="myscroll">
 	   <% for(int i=0;i<lc.size();i++) {%>
-	    <div class="item"><input type="checkbox" name="c_<%=lc.get(i).getCodeid()%>" value="<%=lc.get(i).getCodeid()%>"><%=lc.get(i).getTitle()%><br/></div>
+	    <div class="item"><%=cc.getCodebyId(lc.get(i).getCodeid()).getTitle()%><br/></div>
 	    <% }%>
 	    
 	    </div></div>
 	    </div>
 	   <br/>
-	    <a id='getresult' class="button white" onclick="addnews();">提交</a>
    </form>
 	</div>
 	<div id="loading" style="display:none"></div>  

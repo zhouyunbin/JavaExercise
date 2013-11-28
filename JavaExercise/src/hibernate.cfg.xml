@@ -33,6 +33,7 @@ org.hibernate.connection.ProxoolConnectionProvider
 <mapping resource="model/Exam.hbm.xml" />
 <mapping resource="model/Examitem.hbm.xml" />
 <mapping resource="model/Examcode.hbm.xml" />
+<mapping resource="model/Score.hbm.xml" />
 </session-factory>
 
 </hibernate-configuration>
