@@ -29,6 +29,13 @@ public class UserController {
 		return (List<User>)(Object)MySessionFactory.getByprop("User", prop, value);
 	}
 	
+	public boolean hasUser(String username)
+	{
+		List<User> li= (List<User>)(Object)MySessionFactory.executeQuery("From User u where u.username='"+username+"'");
+		if(li==null||li.size()<1) return false;
+		else return true;
+	}
+	
 	public User getUser(int userid)
 	{
 		List<User> li= (List<User>)(Object)MySessionFactory.executeQuery("From User u where u.userid="+userid);
@@ -36,16 +43,16 @@ public class UserController {
 		else return null;
 	}
 	//返回值为 “true”表示登录成功
-	public String verifyUser(String name,String password)
+	public User verifyUser(String name,String password)
 	{
 		List<User> li= (List<User>)(Object)MySessionFactory.executeQuery("From User u where u.username='"+name+"'");
-		if(li.size() == 0) return "不存在该用户";
+		if(li.size() == 0)  return null;
 		else if(li.get(0).getPassword().equals(MD5(password)))
 		{
-			return "true";
+			return li.get(0);
 		}
 		
-		return "false";
+		return null;
 	}
 	public Student verifyStudent(String name,String password)
 	{
@@ -97,5 +104,19 @@ public class UserController {
             return null;
         }
     }
+	public List<User> getListByColumn(int start,int size)
+	{
+		return getListByColumn(start,size,"userid");
+	}
+	
+	public List<User> getListByColumn(int start,int size,String column)
+	{
+		return (List<User>)(Object)MySessionFactory.getByColumn("User", column, start, size);
+	}
+	
+	public int getUserNumber()
+	{
+		return MySessionFactory.getItemNumber("User");
+	}
 
 }

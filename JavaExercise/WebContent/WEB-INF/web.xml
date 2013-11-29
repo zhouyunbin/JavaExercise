@@ -21,6 +21,38 @@
     <filter-name>Encoding</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+    <filter>
+    <filter-name>Userfilter</filter-name>
+    <filter-class>filter.Userfilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>Userfilter</filter-name>
+    <url-pattern>/admin1/*</url-pattern>
+  </filter-mapping>
+    <filter>
+    <filter-name>Studentfilter</filter-name>
+    <filter-class>filter.Studentfilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>Studentfilter</filter-name>
+    <url-pattern>/student/*</url-pattern>
+  </filter-mapping>
+    <filter-mapping>
+    <filter-name>Studentfilter</filter-name>
+    <url-pattern>/examlist.jsp</url-pattern>
+  </filter-mapping>
+    <filter-mapping>
+    <filter-name>Studentfilter</filter-name>
+    <url-pattern>/codelist.jsp</url-pattern>
+  </filter-mapping>
+    <filter-mapping>
+    <filter-name>Studentfilter</filter-name>
+    <url-pattern>/showCode.jsp</url-pattern>
+  </filter-mapping>
+    <filter-mapping>
+    <filter-name>Studentfilter</filter-name>
+    <url-pattern>/showCode2.jsp</url-pattern>
+  </filter-mapping>
   <error-page>
     <error-code>404</error-code>
     <location>/404.html</location>

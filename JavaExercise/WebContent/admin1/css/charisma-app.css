@@ -9,8 +9,6 @@ select{
 background-color:#fff;
 }
 
-<<<<<<< HEAD
-
 img.grayscale{
 -webkit-filter: grayscale(1);
 -webkit-filter: grayscale(100%);
@@ -109,7 +107,6 @@ float:left !important;
 float:right !important;
 }
 
-=======
 .top-block{
 font-size:14px;
 text-align: center;
@@ -607,4 +604,3 @@ box-shadow: 0 0 10px #BDBDBD;
 .box-content.buttons{
 min-height:297px;
 }
->>>>>>> refs/remotes/origin/master

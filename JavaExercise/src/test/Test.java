@@ -1,19 +1,20 @@
 package test;
 
+import java.util.List;
+
 import model.Student;
+import datacontroller.StudentController;
 import datacontroller.UserController;
 
 public class Test {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		//StudentController sc=new StudentController();
+		//List<Student> li=sc.getListByColumn(45, 15);
 		UserController uc=new UserController();
-		Student s=new Student();
-		s.setSname("搞笑");
-		s.setPassword("123456");
-		s.setUsername("123456");
-		s.setSemail("33@qq.com");
-		uc.addStudent(s);
+		System.out.print(uc.hasUser("admin1"));
+		
 
 	}
 

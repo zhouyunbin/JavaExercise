@@ -27,7 +27,7 @@ div{display:block}
 .menu_navcc{width:950px; margin:0 auto;margin-bottom:50px;}
 .menu_nav{width:950px;height:48px;background:url(/image/nav_bg.gif) repeat-x;float:left;margin-top:1px;}
 .menu_nav .nav_content{padding-left:25px;background:url(/image/nav_l_bg.gif) no-repeat;float:left;}
-.menu_nav .nav_content li{width:88px;height:48px;padding-left:15px;padding-right:13px;background:url(/image/nav_li_right.gif) no-repeat right center;float:left;line-height:48px;text-align:center;font-size:14px;font-weight:bold;}
+.menu_nav .nav_content li{width:87px;height:48px;padding-left:15px;padding-right:13px;background:url(/image/nav_li_right.gif) no-repeat right center;float:left;line-height:48px;text-align:center;font-size:14px;font-weight:bold;}
 .menu_nav .nav_content li a{color:#fff;width:88px;height:48px;display:block;}
 .menu_nav .nav_content li.current{line-height:37px;}
 .menu_nav .nav_content li em{background:url(/image/bid_new.gif) no-repeat;width:35px;height:21px;display:inline-block;position:absolute;top:-20px;left:40px;}

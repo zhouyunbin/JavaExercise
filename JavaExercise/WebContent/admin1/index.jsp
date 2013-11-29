@@ -1,14 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>后台管理系统</title>
+	<title>JAVA上机后台管理系统</title>
 	<meta name="author" content="zyb">
 	<link rel="shortcut icon" href="/image/favicon.ico">
 	<!-- The styles -->
 	<link id="bs-css" href="css/bootstrap-cerulean.css" rel="stylesheet">
 	<link href="css/jquery-ui-1.8.21.custom.css" rel="stylesheet">
 	<link href="css/charisma-app.css" rel="stylesheet">
+	<link href="/css/admin.css" rel="stylesheet">
 	<style type="text/css">
 	  body {
 		padding-bottom: 40px;
@@ -16,30 +19,20 @@
 	  .sidebar-nav {
 		padding: 9px 0;
 	  }
-	</style>
-
-
-	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
-	<!--[if lt IE 9]>
-	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-
-	<!-- The fav icon -->
-		
+	</style>		
 </head>
-
 <body>
 		<!-- topbar starts -->
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container-fluid">
 
-				<a class="brand" href="index.html"> <img alt="Charisma Logo" src="img/logo20.png" /> <span>JAVA上机后台管理系统</span></a>
+				<a class="brand" href="index.jsp"> <img alt="Charisma Logo" src="img/logo20.png" /> <span>JAVA上机后台管理系统</span></a>
 				
 				<!-- theme selector starts -->
 				<div class="btn-group pull-right theme-container" >
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-						<i class="icon-tint"></i><span class="hidden-phone">更改皮肤</span>
+						<i class="icon-tint"></i><span class="hidden-phone">主题</span>
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu" id="themes">
@@ -59,13 +52,22 @@
 				<!-- user dropdown starts -->
 				<div class="btn-group pull-right" >
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-						<i class="icon-user"></i><span class="hidden-phone"> admin</span>
+					<%@ page import="model.User"%>
+					<%
+						User u=(User)request.getSession().getAttribute("user");
+							
+					%>
+						<i class="icon-user"></i><span class="hidden-phone"><%=u.getUsername() %></span>
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="#">个人资料</a></li>
+						<li><a class="ajax-link" href="./changepwd.jsp">修改密码</a></li>
 						<li class="divider"></li>
-						<li><a href="login.html">注销</a></li>
+						<li><a class="ajax-link" href="./changemail.jsp">修改邮箱</a></li>
+						<li class="divider"></li>
+						<li><a class="ajax-link" href="./changename.jsp">修改部门</a></li>
+						<li class="divider"></li>
+						<li><a class="ajax-link" href="./logout.jsp">注销</a></li>
 					</ul>
 				</div>
 				<!-- user dropdown ends -->
@@ -91,23 +93,31 @@
 				<div class="well nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						<li class="nav-header hidden-tablet">信息管理</li>
-						<li><a class="ajax-link" href="./main.jsp"><i class="icon-home"></i><span class="hidden-tablet"> 主页</span></a></li>
-						<li><a class="ajax-link" href="./newslist.jsp" ><i class="icon-eye-open"></i><span class="hidden-tablet"> 新闻管理</span></a></li>
-						<li><a class="ajax-link" href="./Videolist.jsp"><i class="icon-edit"></i><span class="hidden-tablet"> 视频管理</span></a></li>
-						<li><a class="ajax-link" href="./examlist.html"><i class="icon-list-alt"></i><span class="hidden-tablet">考试管理</span></a></li>
+						<li><a class="ajax-link" href="./main.jsp"><i class="icon-home"></i><span class="hidden-tablet">个人信息</span></a></li>
+						<li><a class="ajax-link" href="./newslist.jsp" ><i class="icon-eye-open"></i><span class="hidden-tablet">新闻管理</span></a></li>
+						<li><a class="ajax-link" href="./Videolist.jsp"><i class="icon-edit"></i><span class="hidden-tablet">视频管理</span></a></li>
+						<li><a class="ajax-link" href="./examlist.html"><i class="icon-list-alt"></i><span class="hidden-tablet">考试管理</span></a></li>
 						<li><a class="ajax-link" href="./questionlist.jsp"><i class="icon-font"></i><span class="hidden-tablet">试题管理</span></a></li>
-						<li><a class="ajax-link" href="./codelist.jsp"><i class="icon-picture"></i><span class="hidden-tablet">程序题管理</span></a></li>
+						<li><a class="ajax-link" href="./codelist.jsp"><i class="icon-picture"></i><span class="hidden-tablet">编程题管理</span></a></li>
 						<li><a class="ajax-link" href="./messagelist.jsp"><i class="icon-align-justify"></i><span class="hidden-tablet">留言板管理</span></a></li>
-						<li class="nav-header hidden-tablet">人员管理</li>		
-						<li><a class="ajax-link" href="calendar.html"><i class="icon-calendar"></i><span class="hidden-tablet"> 管理员管理</span></a></li>
-						<li><a class="ajax-link" href="grid.html"><i class="icon-th"></i><span class="hidden-tablet">学生管理</span></a></li>
+						<li class="nav-header hidden-tablet">人员管理</li>		
+						<li><a class="ajax-link" href="./userlist.html"><i class="icon-calendar"></i><span class="hidden-tablet">管理员管理</span></a></li>
+						<li><a class="ajax-link" href="./studentlist.html"><i class="icon-th"></i><span class="hidden-tablet">学生管理</span></a></li>
 					</ul>
 					<label id="for-is-ajax" class="hidden-tablet" for="is-ajax" style="display:none"><input id="is-ajax" type="checkbox" checked> Ajax on menu</label>
 				</div><!--/.well -->
 			</div><!--/span-->
 			<!-- left menu ends -->
 			<div id="content" class="span10" style="height:550px">
-			test
+			<div style="margin:30px">
+<table style="font-size:20px" class='brand'>
+<tr>
+<td>当前用户:</td><td><%=u.getUsername() %></td></tr>
+<tr><td>邮箱:</td><td><%=u.getEmail()%></td></tr>
+<tr><td>部门:</td><td><%=u.getDepartment() %></td>
+</tr>
+</table>
+</div>
 			</div>
 		</div>
 		</div><!--/.fluid-container-->

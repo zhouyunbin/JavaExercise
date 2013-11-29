@@ -1,22 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
-	<link rel="stylesheet" type="text/css" href="/js/Flexigrid-master/css/flexigrid.css">
+<link rel="stylesheet" type="text/css" href="/js/Flexigrid-master/css/flexigrid.css">
 	<link rel="stylesheet" type="text/css" href="/js/Flexigrid-master/demo/style.css">
 	<script type="text/javascript" src="/js/Flexigrid-master/js/flexigrid.js"></script>
 	<div style="width: 950px;margin: 0 auto;height:480px">
-	<div style="margin:0px"> <table id="flex1" style="display:none"></table> </div>     
+	<div style="margin:0px"> <table id="flex1" style="display:none"></table> </div>      
 	    <script type="text/javascript">
         $("#flex1").flexigrid({
-            url: '/admin/QuestionHandler?cmd=list',
+            url: '/StudentHandler?cmd=stulist',
             dataType: 'json',
             colModel: [
-                { display: '题目', name: 'title', width: 800, sortable: true, align: 'center' }
+                { display: '学号', name: 'title', width: 150, sortable: true, align: 'center' },
+                { display: '姓名', name: 'name', width: 150, sortable: true, align: 'left' },
+                { display: '邮箱', name: 'email', width: 150, sortable: true, align: 'left' }
             ],
             buttons: [
-						{ name: '添加', bclass: 'add', onpress: activ },
-						{ name: '打开', bclass: 'edit', onpress: activ },
-						{ name: '修改', bclass: 'add', onpress: activ },
+						{ name: '批量添加学生', bclass: 'add', onpress: activ },
+						{ name: '查看学生成绩', bclass: 'edit', onpress: activ },
                       { name: '删除', bclass: 'delete', onpress: activ },
                       { separator: true }
                     ],
@@ -24,7 +22,7 @@
             sortorder: "desc",
             singleSelect: true,
             usepager: true,
-            title: "题目列表",
+            title: "学生列表",
             useRp: true,
             rp: 15,
             showTableToggleBtn: true,
@@ -41,7 +39,7 @@
         }
         function selectAccount() {
             id = $('.trSelected').attr("id").replace("row", "");
-            window.open('/admin/modifyquestion.jsp?&informno=' + id);
+            window.open('/showCode.jsp?&informno=' + id);
 
         };
         function mousechang1(p,g)
@@ -49,6 +47,7 @@
             $(p).css("cursor","pointer");
         }
         function activ(com, grid) {
+            
         
             if (com == '删除') {
             	var id = $('.trSelected', grid).attr("id").replace("row", "");
@@ -56,7 +55,7 @@
                 if (conf) {
                     $.each($('.trSelected', grid),
                         function (key, value) {
-                            $.post('/admin/QuestionHandler?cmd=delete&informno=' + id,
+                            $.post('/StudentHandler?cmd=deletestu&stuid=' + id,
                                  function (result) {
                                      // when ajax returns (callback), update the grid to refresh the data
                                      $("#flex1").flexReload();
@@ -70,21 +69,16 @@
                         });
                 }
             }
-            else if(com =='添加')
+            else if(com =='批量添加学生')
            	{
-           		window.open('/admin/addquestion.jsp');
+           		window.open('./addstudent.jsp');
            	}
-            else if(com =='修改')
-           	{
-            	var id = $('.trSelected', grid).attr("id").replace("row", "");
-           		window.open('/admin/modifyquestion.jsp?informno='+id);
-           	}
-            else if(com =='打开')
+            else if(com =='查看学生成绩')
            	{
             	var id = $('.trSelected', grid).attr("id").replace("row", "");
-           		window.open('/question.jsp?informno='+id);
+           		window.open('./stumanage.jsp?informno='+id);
            	}
-            
+
 
         };
 </script>

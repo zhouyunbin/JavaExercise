@@ -18,7 +18,7 @@
 	<div style="margin:15px"> <table id="flex1" style="display:none"></table> </div>       
 	    <script type="text/javascript">
         $("#flex1").flexigrid({
-            url: '/StudentHandler?cmd=listscore',
+            url: '/StudentHandler?cmd=stuscore&studentid='+getQueryString('informno'),
             dataType: 'json',
             colModel: [
                 { display: '考试名称', name: 'title', width: 150, sortable: true, align: 'center' },
@@ -28,12 +28,6 @@
                 { display: '编程题错误数', name: 'c_wrong', width: 100, sortable: true, align: 'center' },
                 { display: '考试时间', name: 'examtime', width: 150, sortable: true, align: 'center' }
             ],
-            buttons: [
-					{ name: '修改姓名', bclass: 'edit', onpress: activ },
-					{ name: '修改密码', bclass: 'edit', onpress: activ },
-                    { name: '修改邮箱', bclass: 'edit', onpress: activ },
-                    { separator: true }
-                  ],
             sortname: "id",
             sortorder: "desc",
             singleSelect: true,
@@ -63,16 +57,17 @@
             $(p).css("cursor","pointer");
         };
         function activ(com, grid){
-        	if(com=="修改姓名"){
-        		window.open("/student/changename.jsp");
-        	}
-        	else if(com=="修改邮箱"){
-        		window.open("/student/changemail.jsp");
-        	}
-			if(com=="修改密码"){
-				window.open("/student/changepwd.jsp");
-			}
+        	
         };
+        function getQueryString(name)
+        {
+        	  var reg = new RegExp("(^|&amp;)" + name + "=([^&amp;]*)(&amp;|$)", "i");
+        	  var r = window.location.search.substr(1).match(reg);
+        	  if (r == null)
+        	  return null;
+        	  else
+        	  return unescape(r[2]);
+        }
         
 </script>
 	</div>

@@ -27,7 +27,7 @@
 <script>
 function execute()
 {
-	$.post("/student/StudentHandler?cmd=changename",{name:$("#uname").val()},function(data){
+	$.post("/StudentHandler?cmd=changename",{name:$("#uname").val()},function(data){
 		if(data=="True"){
 			alert("修改成功!");
 			window.close();

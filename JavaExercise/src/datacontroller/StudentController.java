@@ -2,6 +2,8 @@ package datacontroller;
 
 import java.security.MessageDigest;
 import java.util.List;
+
+import model.Stuanswer;
 import model.Student;
 
 
@@ -46,8 +48,27 @@ import model.Student;
 			return null;
 		}
 		
+		public List<Student> getListByColumn(int start,int size)
+		{
+			return getListByColumn(start,size,"studentid");
+		}
 		
+		public List<Student> getListByColumn(int start,int size,String column)
+		{
+			return (List<Student>)(Object)MySessionFactory.getByColumn("Student", column, start, size);
+		}
 		
+		public int getStudentNumber()
+		{
+			return MySessionFactory.getItemNumber("Student");
+		}
+		
+		public boolean hasStudent(String username)
+		{
+			List<Student> li= (List<Student>)(Object)MySessionFactory.executeQuery("From Student s where s.username='"+username+"'");
+			if(li==null||li.size()<1) return false;
+			else return true;
+		}
 		//MD5加密函数
 		public final static String MD5(String s) {
 	        char hexDigits[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};       

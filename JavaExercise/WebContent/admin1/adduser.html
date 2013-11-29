@@ -1,0 +1,46 @@
+
+	<div style="width: 950px;margin: 0 auto;height:580px;border:1px solid;
+         background: url(/image/bkg-tile-2.png) repeat left top;
+		border: 1px solid #ddd;
+		border-radius: 5px;
+		box-shadow: 0 0 5px #ddd;"><br/><br/><br/><br/>
+		<center><table>
+		<tr><td>用户名：</td><td><input type="text" id="name" ></td></tr>
+		<tr><td>邮箱：</td><td><input type="text" id="mail" ></td></tr>
+		<tr><td>部门：</td><td><input type="text" id="department" ></td></tr>
+		<tr><td>密码：</td><td><input type="password" id="pwd1" ></td></tr>
+		<tr><td>确认密码：</td><td><input type="password" id="pwd2" ></td></tr>
+		</table>
+	<a class="button white" onclick="execute();">提交</a></center></div>
+<script>
+function checkEmail(cEmail)  //验证邮箱地址是否正确，cEmail为邮箱地址。
+{
+	 var filter  = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	 if (filter.test(cEmail)) return true;
+	 else {
+
+	 return false;
+	 }
+  }
+function execute()
+{
+	if(checkEmail($("#mail").val()))
+	{
+		if($('#pwd1').val()!=$('#pwd2').val())
+		{
+			alert("两次输入密码不一致!");
+			return;
+		}
+		$.post("/UserHandler?cmd=adduser",{email:$("#mail").val(),
+			username:$('#name').val(),department:$('#department').val(),
+			password:$('#pwd1').val()},function(data){
+		if(data=="True"){
+			alert("添加成功!");
+			window.close();
+		}
+		else 
+			alert("由于未知原因，失败");
+	});}
+	else alert("邮箱格式不正确");
+}
+</script>

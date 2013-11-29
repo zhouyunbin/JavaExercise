@@ -80,6 +80,8 @@ $(document).ready(function(){
 		$.get(url,function(data){
 			$('#content').html(data);
 		});
+		if($clink.parent().parent().attr('class')=="dropdown-menu")
+			$clink.parent('li').removeClass('active');
 	});
 	
 	//animating menus on hover

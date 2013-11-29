@@ -23,7 +23,7 @@ import model.Student;
 /**
  * Servlet implementation class StudentHandler
  */
-@WebServlet("/student/StudentHandler")
+@WebServlet("/StudentHandler")
 public class StudentHandler extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -87,7 +87,9 @@ public class StudentHandler extends HttpServlet {
 			result.put("page", page);
 			result.put("total", nc.getScoreNumber());
 			ExamController ec=new ExamController();
-			 for(int i = page*rp-rp; i < li.size()&&i<rp; i++) {  
+			int j=0;
+			 for(int i = page*rp-rp; i < li.size()&&j<rp; i++) {  
+				 	++j;
 		            Map cellMap = new HashMap();    
 		            cellMap.put("id", li.get(i).getScoreid());    
 		            cellMap.put("cell", new Object [] 
@@ -104,6 +106,95 @@ public class StudentHandler extends HttpServlet {
 			 response.getWriter().write(object.toString());
 			 return;
 		}
+		else if(cmd.equals("stulist"))
+		{
+			Map result=new HashMap();
+			List mapList = new ArrayList();  
+			StudentController nc =new StudentController();
+			int page=Integer.parseInt(request.getParameter("page"));
+			int rp=Integer.parseInt(request.getParameter("rp"));
+			List<Student> li=nc.getListByColumn(rp*page-rp, rp);
+			result.put("page", page);
+			result.put("total", nc.getStudentNumber());
+			//System.out.print(li.size());
+			 for(int i = 0; i < li.size(); i++) {  
+		            Map cellMap = new HashMap();    
+		            cellMap.put("id", li.get(i).getStudentid());    
+		            cellMap.put("cell", new Object [] 
+		            		{li.get(i).getUsername(),
+		            		li.get(i).getSname(),
+		            		li.get(i).getSemail()});       
+		            mapList.add(cellMap);    
+		        }    
+			 result.put("rows", mapList);    
+			 JSONObject object = JSONObject.fromObject(result);
+			 response.getWriter().write(object.toString());
+			 return;	
+		}
+		else if(cmd.equals("deletestu"))
+		{
+			String studentid=request.getParameter("stuid");
+			Student ssss=new Student();
+			ssss.setStudentid(Integer.parseInt(studentid));
+			StudentController stc=new StudentController();
+			stc.deleteStudent(ssss);
+			response.getWriter().write("True");
+			return;	
+		}
+		else if(cmd.equals("stuscore"))
+		{
+			Map result=new HashMap();
+			List mapList = new ArrayList();  
+			ScoreController nc =new ScoreController();
+			int page=Integer.parseInt(request.getParameter("page"));
+			int rp=Integer.parseInt(request.getParameter("rp"));
+			String studentid=request.getParameter("studentid");
+			List<Score> li=nc.listScore("studentid", studentid);
+			result.put("page", page);
+			result.put("total", nc.getScoreNumber());
+			ExamController ec=new ExamController();
+			int j=0;
+			 for(int i = page*rp-rp; i < li.size()&&j<rp; i++) { 
+				 	++j;
+		            Map cellMap = new HashMap();    
+		            cellMap.put("id", li.get(i).getScoreid());    
+		            cellMap.put("cell", new Object [] 
+		            		{ec.getExambyId(li.get(i).getExamid()).getExamtitle(),
+		            		li.get(i).getSelection_right(),
+		            		li.get(i).getSelection_wrong(),
+		            		li.get(i).getCode_right(),
+		            		li.get(i).getCode_wrong(),
+		            		li.get(i).getCreatetime().toString()});       
+		            mapList.add(cellMap);    
+		        }    
+			 result.put("rows", mapList);    
+			 JSONObject object = JSONObject.fromObject(result);
+			 response.getWriter().write(object.toString());
+			 return;
+		}
+		else if(cmd.equals("addstu"))
+		{
+			String prefix=request.getParameter("prefix");
+			String start=request.getParameter("start");
+			String end=request.getParameter("end");
+			String pwd=request.getParameter("pwd");
+			int length=end.length();
+			int i,k;
+			i=Integer.parseInt(start);
+			k=Integer.parseInt(end);
+			for(;i<=k;i++)
+			{
+				Student s1=new Student();
+				String stuname=prefix+String.format("%0"+length+"d", i);
+				if(sc.hasStudent(stuname)) continue;
+				s1.setUsername(stuname);
+				s1.setPassword(pwd);
+				sc.addStudent(s1);
+			}
+			response.getWriter().write("True");
+			return;
+		}
+			
 	}
 
 }

@@ -12,13 +12,14 @@
 <li><a href="/videolist.jsp" title="上机视频"><span>上机视频</span></a></li>
 <li><a href="/codelist.jsp" title="在线code"><span>在线code</span></a></li>
 <li><a href="/examlist.jsp" title="在线测验"><span>在线测验</span></a></li>
-<li><a href="#" title="F&Q"><span>F&Q</span></a></li>
+<li><a href="/messagelist.jsp" title="FAQ"><span>FAQ</span></a></li>
 <% 
 	Student s=(Student)session.getAttribute("student");
 	if(s!=null)
 	{
 %>
-<li><a href="/student/stumanage.jsp" title="F&Q"><span>欢迎您，<%=s.getSname() %></span></a></li>
+<li><a href="/student/stumanage.jsp" title="welcome"><span>欢迎您，<%=s.getSname() %></span></a></li>
+<li><a href="/logout.jsp" title="注销"><span>注销</span></a></li>
 <% } %>
 </ul>
 <div class="menu_nav_right">
