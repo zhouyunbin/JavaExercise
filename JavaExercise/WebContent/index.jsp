@@ -9,6 +9,8 @@
 <title>大连理工大学JAVA上机平台</title>
 <%@ page import="datacontroller.NewsController"%>
 <%@ page import="model.News"%>
+<%@ page import="datacontroller.FaqController"%>
+<%@ page import="model.Faq"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.text.DateFormat"%>
 <%@ page import="datacontroller.VideoController"%>
@@ -61,9 +63,22 @@
 			<p style='width:180px;white-space:normal;margin:5px '>注意：未登录用户禁止在线测验和在线code，请登录后再使用，如果您没有学生账户，请联系管理员开通！</p>
 			<%
 				}
-			else{
+			else{%>
+				 <div class="headt">
+		    	<h1 class="newstitle"><img src="/image/text_01.png" />最新FAQ<a href="/faqlist.jsp"><span>更多</span></a></h1>
+		    </div>
+		    <ul class="newsul">
+		    <%
+		    	FaqController cc=new FaqController(); 
+				List<Faq> lic=cc.getListByColumn(0, 10);
+				for(i=0;i<lic.size();i++)
+				{
+			%>
+		        <li><a href="/showfaq.jsp?informno=<%=lic.get(i).getNewsid() %>"><span class="sidespan"><%=lic.get(i).getTitle() %></span></a></li>
+		    <% } %>
+		   </ul>
 				
-			}
+			<% }
 			%>
 		</div>
 	</div>

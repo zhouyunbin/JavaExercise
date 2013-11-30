@@ -99,7 +99,7 @@
 						<li><a class="ajax-link" href="./examlist.html"><i class="icon-list-alt"></i><span class="hidden-tablet">考试管理</span></a></li>
 						<li><a class="ajax-link" href="./questionlist.jsp"><i class="icon-font"></i><span class="hidden-tablet">试题管理</span></a></li>
 						<li><a class="ajax-link" href="./codelist.jsp"><i class="icon-picture"></i><span class="hidden-tablet">编程题管理</span></a></li>
-						<li><a class="ajax-link" href="./messagelist.jsp"><i class="icon-align-justify"></i><span class="hidden-tablet">留言板管理</span></a></li>
+						<li><a class="ajax-link" href="./faqlist.jsp"><i class="icon-align-justify"></i><span class="hidden-tablet">FAQ管理</span></a></li>
 						<li class="nav-header hidden-tablet">人员管理</li>		
 						<li><a class="ajax-link" href="./userlist.html"><i class="icon-calendar"></i><span class="hidden-tablet">管理员管理</span></a></li>
 						<li><a class="ajax-link" href="./studentlist.html"><i class="icon-th"></i><span class="hidden-tablet">学生管理</span></a></li>

@@ -65,6 +65,19 @@ public class CompileAndRunJavaFile extends HttpServlet {
 			resp.sendRedirect("/codelist.jsp");
 			return;
 		}
+		else if(cmd.equals("modify"))
+		{
+			Code c=new Code();
+			c.setCanswer(CompileAndRun(req,resp));
+			c.setTitle(req.getParameter("title"));
+			c.setCcontent(req.getParameter("content"));
+			c.setCdescribe(req.getParameter("describe"));
+			c.setCodeid(Integer.parseInt(req.getParameter("uid")));
+			CodeController cc=new CodeController();
+			cc.updateCode(c);
+			resp.sendRedirect("/codelist.jsp");
+			return;
+		}
 		else if(cmd.equals("delete"))
 		{
 			CodeController nc=new CodeController();

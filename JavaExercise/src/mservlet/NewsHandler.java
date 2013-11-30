@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONObject;
 import datacontroller.NewsController;
 import model.News;
+import model.User;
 
 /**
  * Servlet implementation class NewsHandler
@@ -50,12 +51,27 @@ public class NewsHandler extends HttpServlet {
 		{
 			News n=new News();
 			n.setTitle(request.getParameter("title"));
-			n.setAuthorid(1);
+			User u=(User) request.getSession().getAttribute("user");
+			n.setAuthorid(u.getUserid());
 			n.setCreatetime(new Date());
 			n.setContent(request.getParameter("editor1"));
 			System.out.println(n.getTitle());
 			nc.addNews(n);
-			response.sendRedirect("/admin/newslist.jsp");
+			response.sendRedirect("/admin1/");
+			return;
+		}
+		else if(cmd.equals("modify"))
+		{
+			News n=new News();
+			n.setTitle(request.getParameter("title"));
+			User u=(User) request.getSession().getAttribute("user");
+			n.setAuthorid(u.getUserid());
+			n.setCreatetime(new Date());
+			n.setContent(request.getParameter("editor1"));
+			n.setNewsid(Integer.parseInt(request.getParameter("uid")));
+			System.out.println(n.getTitle());
+			nc.updateNews(n);
+			response.sendRedirect("/admin1/");
 			return;
 		}
 		else if(cmd.equals("list"))

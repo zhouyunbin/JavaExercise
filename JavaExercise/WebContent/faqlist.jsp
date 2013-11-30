@@ -18,29 +18,24 @@
 	<div style="margin:15px"> <table id="flex1" style="display:none"></table> </div>       
 	    <script type="text/javascript">
         $("#flex1").flexigrid({
-            url: '/admin/ExamHandler?cmd=list',
+            url: '/admin/FaqHandler?cmd=list',
             dataType: 'json',
             colModel: [
-                       { display: '考试名称', name: 'title', width: 150, sortable: true, align: 'center' },
-                       { display: '考试描述', name: 'describe', width: 350, sortable: true, align: 'left' },
-                       { display: '考试时长(分钟)', name: 'examtime', width: 150, sortable: true, align: 'left' },
-                       { display: '发布时间', name: 'createtime', width: 150, sortable: true, align: 'left' }
+                       { display: '标题', name: 'title', width: 400, sortable: true, align: 'center' },
+                       { display: '发布时间', name: 'createtime', width: 400, sortable: true, align: 'left' },
             ],
-            buttons: [
-					{ name: '开始考试', bclass: 'add', onpress: activ },
-                    { separator: true }
-                  ],
-            sortname: "id",
+            sortname: "time",
             sortorder: "desc",
             singleSelect: true,
             usepager: true,
-            title: "考试列表",
+            title: "新闻通知",
             useRp: true,
             rp: 15,
             showTableToggleBtn: true,
             width: 900,
             onSubmit: addFormData,
-            height: 270,
+            height: 300,
+            onSClick: selectAccount,
             onMouseover: mousechang1
         });
         function addFormData() {
@@ -51,32 +46,13 @@
         }
         function selectAccount() {
             id = $('.trSelected').attr("id").replace("row", "");
-            window.open('/question.jsp?informno=' + id);
+            window.open('/showfaq.jsp?&informno=' + id);
 
         };
         function mousechang1(p,g)
         {
             $(p).css("cursor","pointer");
         }
-        function activ(com, grid) {
-           if(com =='开始考试')
-           	{
-            	var id = $('.trSelected', grid).attr("id").replace("row", "");
-            	var conf = confirm('确认开始考试!(一旦开始，无法中止)')
-            	if (conf)
-            	{
-	            	$.post("/RunexamHandler?cmd=start&examid="+id,function(data){
-	            		if(data=="True")
-            			{
-	            			window.open('/showexam.jsp?informno='+id,'_self');
-            			}
-	            		else alert('您目前不能考试');
-	            	});
-            	}
-           	}
-
-
-        };
 </script>
 	</div>
 	<%@ include file="/template/footer.jsp" %>

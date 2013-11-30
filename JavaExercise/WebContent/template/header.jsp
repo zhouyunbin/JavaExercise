@@ -12,7 +12,7 @@
 <li><a href="/videolist.jsp" title="上机视频"><span>上机视频</span></a></li>
 <li><a href="/codelist.jsp" title="在线code"><span>在线code</span></a></li>
 <li><a href="/examlist.jsp" title="在线测验"><span>在线测验</span></a></li>
-<li><a href="/messagelist.jsp" title="FAQ"><span>FAQ</span></a></li>
+<li><a href="/faqlist.jsp" title="FAQ"><span>FAQ</span></a></li>
 <% 
 	Student s=(Student)session.getAttribute("student");
 	if(s!=null)

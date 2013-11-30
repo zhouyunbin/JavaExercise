@@ -17,6 +17,7 @@
             buttons: [
 						{ name: '添加', bclass: 'add', onpress: activ },
 						{ name: '打开', bclass: 'edit', onpress: activ },
+						{ name: '修改', bclass: 'edit', onpress: activ },
                       { name: '删除', bclass: 'delete', onpress: activ },
                       { separator: true }
                     ],
@@ -78,7 +79,11 @@
             	var id = $('.trSelected', grid).attr("id").replace("row", "");
            		window.open('/showVideo.jsp?informno='+id);
            	}
-
+            else if(com =='修改')
+           	{
+            	var id = $('.trSelected', grid).attr("id").replace("row", "");
+           		window.open('./modifyvideo.jsp?informno='+id);
+           	}
 
         };
 </script>

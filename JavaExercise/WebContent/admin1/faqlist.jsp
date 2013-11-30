@@ -9,7 +9,7 @@
 	<div style="margin:0px"> <table id="flex1" style="display:none"></table> </div>       
 	    <script type="text/javascript">
         $("#flex1").flexigrid({
-            url: '/admin/NewsHandler?cmd=list',
+            url: '/admin/FaqHandler?cmd=list',
             dataType: 'json',
             colModel: [
                 { display: '标题', name: 'title', width: 400, sortable: true, align: 'center' },
@@ -26,7 +26,7 @@
             sortorder: "desc",
             singleSelect: true,
             usepager: true,
-            title: "新闻通知",
+            title: "FAQ",
             useRp: true,
             rp: 15,
             showTableToggleBtn: true,
@@ -43,7 +43,7 @@
         }
         function selectAccount() {
             id = $('.trSelected').attr("id").replace("row", "");
-            window.open('/shownews.jsp?&informno=' + id);
+            window.open('/showfaq.jsp?&informno=' + id);
 
         };
         function mousechang1(p,g)
@@ -58,7 +58,7 @@
                 if (conf) {
                     $.each($('.trSelected', grid),
                         function (key, value) {
-                            $.post('/admin/NewsHandler?cmd=delete&informno=' + id,
+                            $.post('/admin/FaqHandler?cmd=delete&informno=' + id,
                                  function (result) {
                                      // when ajax returns (callback), update the grid to refresh the data
                                      $("#flex1").flexReload();
@@ -74,17 +74,17 @@
             }
             else if(com =='添加')
            	{
-           		window.open('./addnews.jsp');
+           		window.open('./addfaq.jsp');
            	}
             else if(com =='打开')
            	{
             	var id = $('.trSelected', grid).attr("id").replace("row", "");
-           		window.open('/shownews.jsp?informno='+id);
+           		window.open('/showfaq.jsp?informno='+id);
            	}
-            else if(com =='修改')
+            else if(com =='打开')
            	{
             	var id = $('.trSelected', grid).attr("id").replace("row", "");
-           		window.open('./modifynews.jsp?informno='+id);
+           		window.open('./modifyfaq.jsp?informno='+id);
            	}
 
         };
