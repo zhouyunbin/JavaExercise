@@ -1,7 +1,7 @@
 ﻿body{font-family:微软雅黑,Arial;}
 *{padding:0px;margin:0px;}
 * li{list-style:none;}
-a{text-decoration:none;color:#20537A;}
+a{text-decoration:none;color:#000;}
 a:hover{text-decoration:underline;}
 div{display:block}
 .clearfix:after {

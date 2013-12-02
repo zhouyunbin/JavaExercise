@@ -48,22 +48,7 @@
 	</embed></center>
 		</div>
 		<div class="newsdiv" style="margin:0 0 0 5px;width:200px;height:300px;float:left">
-		<%
-			Student stu=(Student)session.getAttribute("student");
-			if(stu==null)
-			{
-		%>
 		
-			<h1 style="font-size: 14px;"><center>学生登录</center></h1><br/>
-			<table>
-			<tr><td>学号:</td><td><input type="text" id='username' style="width:120px"/></td></tr>
-			<tr><td>密码:</td><td><input type="password" id='upwd' style="width:120px"></td></tr>
-			</table>
-			<a href="#" onclick="login();"><div title="value">登录</div></a><br/>
-			<p style='width:180px;white-space:normal;margin:5px '>注意：未登录用户禁止在线测验和在线code，请登录后再使用，如果您没有学生账户，请联系管理员开通！</p>
-			<%
-				}
-			else{%>
 				 <div class="headt">
 		    	<h1 class="newstitle"><img src="/image/text_01.png" />最新FAQ<a href="/faqlist.jsp"><span>更多</span></a></h1>
 		    </div>
@@ -77,27 +62,15 @@
 		        <li><a href="/showfaq.jsp?informno=<%=lic.get(i).getNewsid() %>"><span class="sidespan"><%=lic.get(i).getTitle() %></span></a></li>
 		    <% } %>
 		   </ul>
-				
-			<% }
-			%>
 		</div>
 	</div>
+	<div class="footer" style="height:30px;margin-bottom:-10px;padding-top:10px;font-size:16px">
+ 友情链接：<a href="http://ssdut.dlut.edu.cn">大连理工大学软件学院</a>
+ <a href="http://teach.dlut.edu.cn">大连理工大学教务处</a>
+ <a href="http://career.dlut.edu.cn">大连理工大学招生就业处</a>
+  <a href="http://www.edlut.com">大连理工大学继续教育学院</a>
+  <a href="http://gs.dlut.edu.cn">大连理工大学研究生院</a>
+</div>
 	<%@ include file="/template/footer.jsp" %>
 </body>
 </html>
-<script>
-function login(){
-	$.post("/UserHandler?cmd=login",{username:$("#username").val(),password:$("#upwd").val()},function(data){
-		if(data=="True")
-		{
-			window.location.href="/";
-		}
-		else
-		{
-			alert("用户名或密码错误!");
-			$("#username").val("");
-			$("#upwd").val("");
-		}
-	});
-}
-</script>

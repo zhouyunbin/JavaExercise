@@ -50,10 +50,12 @@ $(function (){
 });
 function next()
 {
-	$.post("/student/Stuquestion?cmd=next&id="+getQueryString('informno'),function(data)
+	$.post("/student/Stuquestion?cmd=next&id="+getQueryString('informno'),{answer:$('#rightanswer').val()},function(data)
 			{
 				saveanswer();
 				var q=$.parseJSON(data);
+				if(q.isright==1) alert("您答对了!");
+				else alert("您答错了!");
 				if(q.isend==1) alert("您已经答完所有题目！");
 				else {
 					window.location.href="/question.jsp?informno="+q.nextid;
@@ -62,10 +64,12 @@ function next()
 }
 function previous()
 {
-	$.post("/student/Stuquestion?cmd=previous&id="+getQueryString('informno'),function(data)
+	$.post("/student/Stuquestion?cmd=previous&id="+getQueryString('informno'),{answer:$('#rightanswer').val()},function(data)
 			{
 				saveanswer();
 				var q=$.parseJSON(data);
+				if(q.isright==1) alert("您答对了!");
+				else alert("您答错了!");
 				if(q.isend==1) alert("您已到达第一道题!");
 				else {
 					window.location.href="/question.jsp?informno="+q.nextid;

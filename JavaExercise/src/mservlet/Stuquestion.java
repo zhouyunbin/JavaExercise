@@ -57,6 +57,7 @@ public class Stuquestion extends HttpServlet {
 			QuestionController qc=new QuestionController();
 			Question q=null;
 			q=qc.getQuestionbyId(id);
+			Question q1=qc.getQuestionbyId(id+1);
 			while(q==null)
 			{
 				--id;
@@ -66,6 +67,9 @@ public class Stuquestion extends HttpServlet {
 			Map mymap=new HashMap();
 			if(q!=null) mymap.put("isend", 0);
 			else mymap.put("isend", 1);
+			if(request.getParameter("answer").equals(q1.getRight_answer()))
+				mymap.put("isright", 1);
+			else mymap.put("isright", 0);
 			mymap.put("nextid", id);
 			JSONObject object = JSONObject.fromObject(mymap);
 			response.getWriter().write(object.toString());
@@ -77,6 +81,7 @@ public class Stuquestion extends HttpServlet {
 			QuestionController qc=new QuestionController();
 			Question q=null;
 			q=qc.getQuestionbyId(id);
+			Question q1=qc.getQuestionbyId(id-1);
 			int maxid=qc.getMaxQuestionId();
 			while(q==null)
 			{
@@ -88,6 +93,9 @@ public class Stuquestion extends HttpServlet {
 			if(q!=null) mymap.put("isend", 0);
 			else mymap.put("isend", 1);
 			mymap.put("nextid", id);
+			if(request.getParameter("answer").equals(q1.getRight_answer()))
+				mymap.put("isright", 1);
+			else mymap.put("isright", 0);
 			JSONObject object = JSONObject.fromObject(mymap);
 			response.getWriter().write(object.toString());
 		}

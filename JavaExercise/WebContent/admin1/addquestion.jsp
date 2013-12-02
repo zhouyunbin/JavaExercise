@@ -20,23 +20,23 @@
 			style="margin: 20px">
 			<p>
 				题目：
-				<textarea id="editor1" class="ckeditor" name="editor1"></textarea>
+				<textarea id="editor1" class="ckeditor" name="editor1" onfocus='myfocus(1);'></textarea>
 			</p>
 			<p>
 				答案A：
-				<textarea id="editor2" class="ckeditor" name="editor2"></textarea>
+				<textarea id="editor2" class="ckeditor" name="editor2" onfocus='myfocus(2);'></textarea>
 			</p>
 			<p>
 				答案B：
-				<textarea id="editor3" class="ckeditor" name="editor3"></textarea>
+				<textarea id="editor3" class="ckeditor" name="editor3" onfocus='myfocus(3);'></textarea>
 			</p>
 			<p>
 				答案C：
-				<textarea id="editor4" class="ckeditor" name="editor4"></textarea>
+				<textarea id="editor4" class="ckeditor" name="editor4" onfocus='myfocus(4);'></textarea>
 			</p>
 			<p>
 				答案D：
-				<textarea id="editor5" class="ckeditor" name="editor5"></textarea>
+				<textarea id="editor5" class="ckeditor" name="editor5" onfocus='myfocus(5);'></textarea>
 			</p>
 			<p>
 				正确答案：<select name="rightanswer" id="rightanswer">
@@ -55,6 +55,9 @@
 </html>
 <script>
 	var lighttext;
+	function myfocus(data){
+		lighttext=data;
+	}
     $(function () {
         	CKEDITOR.replace( 'editor1',
         			{
@@ -76,6 +79,11 @@
         			{
         			customConfig : '/js/myconfig.js'
         			});
+        	CKEDITOR.instances.editor1.on('focus', myfocus);
+        	CKEDITOR.instances.editor2.on('focus', myfocus);
+        	CKEDITOR.instances.editor3.on('focus', myfocus);
+        	CKEDITOR.instances.editor4.on('focus', myfocus);
+        	CKEDITOR.instances.editor5.on('focus', myfocus);
         	//var con=$(".ckeditor");
         	//con.focus(function(){lighttext=this;});
         $("#uploadify").uploadify({
@@ -102,7 +110,9 @@
             //设置为true将允许多文件上传
             'multi': false,
             'onUploadSuccess': function (file, data, response) {//当上传完成后的回调函数，ajax方式哦~~
-                var editor = CKEDITOR.instances.editor5;
+            	var editor=lighttext.editor;
+            	
+            	
             	//var editor=lighttext;
             	if(editor!=null)
             	{
@@ -125,8 +135,12 @@
     		editor5:CKEDITOR.instances.editor5.document.getBody().getHtml(),
     		rightanswer:$("#rightanswer").val()},function (data)
     		{
-    			if(data=="True")
-    				alert("add successfully!");
+    			if(data=="True"){
+    				alert("添加成功");
+    				window.close();
+    			}
+    			else alert("添加失败");
+    			
     		});
     }
 </script>

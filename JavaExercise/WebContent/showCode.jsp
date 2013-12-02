@@ -30,11 +30,24 @@
 	<hr/>
 	<center><p style="margin:10px">说明:<%=n.getCdescribe() %></p></center>
 	<hr/>
-	<form id="pushcode" method="post">
+	<form id="pushcode" action="/admin/CompileAndRunJavaFile?cmd=execute" method="post">
 	<input name='codeid' style="display:none" value='<%=n.getCodeid() %>'/>
 	<center><textarea name="code" style="width:800px;height:400px">
 	<%=n.getCcontent() %></textarea>
+	<a class="button white" onclick="execute();">提交</a></center>
 	</form>
 	<%@ include file="/template/footer.jsp" %>
 </body>
 </html>
+<script>
+function execute()
+{
+	$.post("/admin/CompileAndRunJavaFile?cmd=execute2",$('#pushcode').serialize(),function(data){
+		if(data=="True"){
+			alert("运行成功！");
+		}
+		else 
+			alert("代码运行错误");
+	});
+}
+</script>

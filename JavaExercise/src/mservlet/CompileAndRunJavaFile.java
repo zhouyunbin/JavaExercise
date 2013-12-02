@@ -135,6 +135,21 @@ public class CompileAndRunJavaFile extends HttpServlet {
 			resp.getWriter().write("True");
 			return;			
 		}
+		else if (cmd.equals("execute2")) {
+			String id=req.getParameter("codeid");
+			CodeController nc=new CodeController();
+			Code c=nc.getCodebyId(Integer.parseInt(id));
+			StuanswerController eic=new StuanswerController();
+			
+			int isright;
+			String result=CompileAndRun(req,resp);
+			if(result.equals(c.getCanswer()))
+			{
+				resp.getWriter().write("True");
+			}
+			else resp.getWriter().write("False");
+			return;			
+		}
 		else if(cmd.equals("list"))
 		{
 			CodeController nc=new CodeController();

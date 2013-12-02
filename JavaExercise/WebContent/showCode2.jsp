@@ -45,7 +45,7 @@ Exam exam=(Exam)session.getAttribute("exam");
 	<input name='codeid' style="display:none" value='<%=n.getCodeid() %>'/>
 	<center><textarea name="code" style="width:800px;height:400px">
 	<%=n.getCcontent() %></textarea>
-	<a class="button white" onclick="$(pushcode).submit();">提交</a></center>
+	<a class="button white" onclick="execute();">提交</a></center>
 	</form>
 	<%@ include file="/template/footer.jsp" %>
 </body>
@@ -59,7 +59,7 @@ function execute()
 			window.close();
 		}
 		else 
-			alert("由于未知原因，失败");
+			alert("代码运行错误");
 	});
 }
 </script>
