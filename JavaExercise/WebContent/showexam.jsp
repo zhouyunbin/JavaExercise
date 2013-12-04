@@ -44,7 +44,13 @@
 	    <div style="float:left"><p>单选题:</p>
 	    <div style="overflow-y:scroll;width:400px;height:300px" class="myscroll">
 	    <% for(int i=0;i<lei.size();i++) {%>
-	    <div class="item"><a target="_blank" href="/question2.jsp?informno=<%=lei.get(i).getQuestionid()%>"><%=(i+1)+". "+nc.getQuestionbyId(lei.get(i).getQuestionid()).getTitle()%></a><br/></div>
+	    <div class="item"><a target="_blank" href="/question2.jsp?informno=<%=lei.get(i).getQuestionid()%>">
+	    <% if(nc.getQuestionbyId(lei.get(i).getQuestionid()).getTitle().length()>23){%>
+	    <%=(i+1)+". "+nc.getQuestionbyId(lei.get(i).getQuestionid()).getTitle().substring(3,23)%>
+	    <%}else{ %>
+	     <%=(i+1)+". "+nc.getQuestionbyId(lei.get(i).getQuestionid()).getTitle().substring(3)%>
+	     <% }%>
+	    </a><br/></div>
 	    <% }%>
 	  
 	    
@@ -64,7 +70,7 @@
 	    <% }%>
 	    
 	    </div></div>
-	    <a class="button white" onclick="addnews();">完成考试!</a></center>
+	    <a class="button white" onclick="addnews();">完成考试!</a>
 	    </div>
 	   <br/>
    </form>
@@ -138,11 +144,11 @@ scrollbar-track-color:#;/*- 滑道 -*/
 	margin-top:4px;
 }
 .myscroll a p{
-	float:right;
+	float:left;
 	margin-left:3px;
 }
 .myscroll a{
-float:left; overflow:hidden;word-break:break-all;height:20px; line-height:20px;width:100px;
+float:left; overflow:hidden;word-break:break-all;height:20px; line-height:20px;width:350px;
 }
 .item{
 	display:block;

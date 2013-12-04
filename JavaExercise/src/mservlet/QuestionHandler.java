@@ -89,8 +89,10 @@ public class QuestionHandler extends HttpServlet {
 			
 			 for(int i = 0; i < li.size(); i++) {  
 		            Map cellMap = new HashMap();    
-		            cellMap.put("id", li.get(i).getQuestionid());    
-		            cellMap.put("cell", new Object [] {li.get(i).getTitle()});       
+		            cellMap.put("id", li.get(i).getQuestionid()); 
+		            if(li.get(i).getTitle().length()>29)
+		            	cellMap.put("cell", new Object [] {page*rp-rp+i+1,li.get(i).getTitle().substring(0, 29)});
+		            else cellMap.put("cell", new Object [] {page*rp-rp+i+1,li.get(i).getTitle()});
 		            mapList.add(cellMap);    
 		        }    
 			 result.put("rows", mapList);    

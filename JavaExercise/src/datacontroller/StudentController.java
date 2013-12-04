@@ -31,7 +31,8 @@ import model.Student;
 		
 		public Student getStudent(int Studentid)
 		{
-			List<Student> li= (List<Student>)(Object)MySessionFactory.executeQuery("From Student u where u.Studentid="+Studentid);
+			List<Student> li= (List<Student>)(Object)MySessionFactory.executeQuery("From Student u where u.studentid="+Studentid);
+			if(li==null) return null;
 			if(li.size()>0) return li.get(0);
 			else return null;
 		}

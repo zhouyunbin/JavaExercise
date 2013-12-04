@@ -28,7 +28,7 @@
 	<h1><center><%=n.getTitle() %></center></h1><br/>
 	<h3><center>发布时间:<%=n.getCreatetime() %> 作者:<%=nc.getAuthorByid(n.getAuthorid()) %></center></h3>
 	<hr/>
-	<div style="margin:10px"><%=n.getContent() %></div></div>
+	<div style="margin:10px;word-wrap:break-word;"><%=n.getContent() %></div></div>
 	<%@ include file="/template/footer.jsp" %>
 </body>
 </html>

@@ -22,7 +22,7 @@
             dataType: 'json',
             colModel: [
                 { display: '程序名称', name: 'title', width: 400, sortable: true, align: 'center' },
-                { display: '视频描述', name: 'describe', width: 400, sortable: true, align: 'left' },
+                { display: '程序描述', name: 'describe', width: 400, sortable: true, align: 'left' },
             ],
             sortname: "id",
             sortorder: "desc",

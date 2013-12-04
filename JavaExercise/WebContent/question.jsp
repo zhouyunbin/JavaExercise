@@ -17,11 +17,11 @@
 		border-radius: 5px;
 		box-shadow: 0 0 5px #ddd;">
 		<div style="margin:20px">
-	题目：<h3 id="title">test</h3><br/>
-	A:<h3 id="answera">test</h3><br/>
-	B:<h3 id="answerb">test</h3><br/>
-	C:<h3 id="answerc">test</h3><br/>
-	D:<h3 id="answerd">test</h3><br/>
+	题目：<h3 id="title" style="word-wrap:break-word;">test</h3><br/>
+	A:<h3 id="answera" style="word-wrap:break-word;">test</h3><br/>
+	B:<h3 id="answerb" style="word-wrap:break-word;">test</h3><br/>
+	C:<h3 id="answerc" style="word-wrap:break-word;">test</h3><br/>
+	D:<h3 id="answerd" style="word-wrap:break-word;">test</h3><br/>
 	
 	请选择答案：<select name="rightanswer" id="rightanswer">
 					<option value="A">A</option>
@@ -32,6 +32,7 @@
 				<br/><br/><br/>
 	<a id='next' class="button white" onclick="next();">下一题</a>
 	<a id='previous' class="button white" onclick="previous();">上一题</a>
+	<a  class="button white" onclick="getanswer();">提交</a>
 	</div></div>
 	<%@ include file="/template/footer.jsp" %>
 </body>
@@ -54,8 +55,6 @@ function next()
 			{
 				saveanswer();
 				var q=$.parseJSON(data);
-				if(q.isright==1) alert("您答对了!");
-				else alert("您答错了!");
 				if(q.isend==1) alert("您已经答完所有题目！");
 				else {
 					window.location.href="/question.jsp?informno="+q.nextid;
@@ -68,20 +67,29 @@ function previous()
 			{
 				saveanswer();
 				var q=$.parseJSON(data);
-				if(q.isright==1) alert("您答对了!");
-				else alert("您答错了!");
 				if(q.isend==1) alert("您已到达第一道题!");
 				else {
 					window.location.href="/question.jsp?informno="+q.nextid;
 				}
 			});
 }
-function saveanswer()
+function getanswer()
 {
-	$.post("/student/Stuquestion?cmd=save&id="+getQueryString('informno'),function(data)
+	$.post("/student/Stuquestion?cmd=getanswer&id="+getQueryString('informno'),{answer:$('#rightanswer').val()},function(data)
 			{
+				saveanswer();
+				var q=$.parseJSON(data);
+				if(q.isright==1) alert("您答对了!");
+				else {
+					alert("您答错了!,正确答案是"+q.answer);
+					
+				}
 				
 			});
+}
+function saveanswer()
+{
+
 }
 function getQueryString(name)
 {

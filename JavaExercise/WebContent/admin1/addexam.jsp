@@ -28,8 +28,15 @@
 	    <div style="float:left"><p>单选题:</p>
 	    <div style="overflow-y:scroll;width:400px;height:300px" class="myscroll">
 	    <% for(int i=0;i<li.size();i++) {%>
-	    <div class="item"><input type="checkbox" name="q_<%=li.get(i).getQuestionid()%>" value="<%=li.get(i).getQuestionid()%>"><%=li.get(i).getTitle()%><br/></div>
+	    <div class="item"><input type="checkbox" name="q_<%=li.get(i).getQuestionid()%>" value="<%=li.get(i).getQuestionid()%>">
+	    <%=i+1 %>.
+	    <%if(li.get(i).getTitle().length()>23){ %>
+	    <%=li.get(i).getTitle().substring(3,19)%>
+	    <%}else{%>
+	    <%=li.get(i).getTitle().substring(3)%>
 	    <% }%>
+	    </div>
+	    <%}%>
 	  
 	    
 	    </div></div>
@@ -44,7 +51,7 @@
 	    <div style="float:left;margin-left:10px"><p>编程题:</p>
 	    <div style="overflow-y:scroll;width:400px;height:300px" class="myscroll">
 	   <% for(int i=0;i<lc.size();i++) {%>
-	    <div class="item"><input type="checkbox" name="c_<%=lc.get(i).getCodeid()%>" value="<%=lc.get(i).getCodeid()%>"><%=lc.get(i).getTitle()%><br/></div>
+	    <div class="item"><input type="checkbox" name="c_<%=lc.get(i).getCodeid()%>" value="<%=lc.get(i).getCodeid()%>"><%=i+1 %>.<%=lc.get(i).getTitle()%><br/></div>
 	    <% }%>
 	    
 	    </div></div>
@@ -83,7 +90,9 @@ scrollbar-track-color:#;/*- 滑道 -*/
 }
 .myscroll p{
 	float:left;
-	margin-left:3px;
+	margin-left:20px;
+	position:relative;
+	
 }
 .myscroll input{
 	float:left;

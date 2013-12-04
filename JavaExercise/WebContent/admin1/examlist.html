@@ -16,7 +16,8 @@
             buttons: [
 						{ name: '添加', bclass: 'add', onpress: activ },
 						{ name: '打开', bclass: 'edit', onpress: activ },
-                      { name: '删除', bclass: 'delete', onpress: activ },
+						{ name: '查看学生成绩', bclass: 'edit', onpress: activ },
+                        { name: '删除', bclass: 'delete', onpress: activ },
                       { separator: true }
                     ],
             sortname: "id",
@@ -79,7 +80,16 @@
             	var id = $('.trSelected', grid).attr("id").replace("row", "");
            		window.open('./showexam.jsp?informno='+id);
            	}
-
+            else if(com =='查看学生成绩')
+           	{
+            	var id = $('.trSelected', grid).attr("id").replace("row", "");
+            	$('#content').html('<div id="loading" class="center">Loading...<div class="center"></div></div>');
+        		var url='/admin1/studentexamlist.jsp?examid='+id;
+        		$.get(url,function(data){
+        			$('#content').html(data);
+        		});
+           	}
+	
 
         };
 </script>

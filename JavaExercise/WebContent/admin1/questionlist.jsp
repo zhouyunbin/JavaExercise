@@ -11,6 +11,7 @@
             url: '/admin/QuestionHandler?cmd=list',
             dataType: 'json',
             colModel: [
+                { display: '编号', name: 'title', width: 50, sortable: true, align: 'center' },
                 { display: '题目', name: 'title', width: 800, sortable: true, align: 'center' }
             ],
             buttons: [

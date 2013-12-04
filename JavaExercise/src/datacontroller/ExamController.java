@@ -90,10 +90,10 @@ public class ExamController {
 	
 	public boolean isFinishExam(int studentid,int examid)
 	{
-		List<Score> li=(List<Score>)(Object)MySessionFactory.executeQuery("From Score where studentid="+studentid+" and examid="+examid);
-		if(li==null) return false;
-		else if(li.size()<1) return false;
-		else return true;
+		//List<Score> li=(List<Score>)(Object)MySessionFactory.executeQuery("From Score where studentid="+studentid+" and examid="+examid);
+		//if(li==null) return false;
+		//else if(li.size()<1) return false;
+		return false;
 	}
 	
 }

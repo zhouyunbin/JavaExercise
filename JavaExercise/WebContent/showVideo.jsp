@@ -33,7 +33,7 @@
 	quality="high" width="720" height="480" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash">
 	</embed></center>
 	<hr/>
-	<p style="margin:10px">视频说明:<%=n.getVdescribe() %></p>
+	<p style="margin:10px;word-wrap:break-word;">视频说明:<%=n.getVdescribe() %></p>
 	<%@ include file="/template/footer.jsp" %>
 </body>
 </html>

@@ -28,17 +28,14 @@
 		Student sss=(Student)session.getAttribute("student");
 		Exam exam=(Exam)session.getAttribute("exam");
 		ExamController ecc=new ExamController();
-		if(ecc.isFinishExam(sss.getStudentid(), exam.getExamid()))
-		{
-			response.sendRedirect("/noexam.html");
-		}
+		
 		Stuanswer stu=stuc.getByStuidandExamidandQuestionid(sss.getStudentid(), exam.getExamid(),Integer.parseInt(request.getParameter("informno")), 1);
 	%>
-	题目：<h3 id="title">test</h3><br/>
-	A:<h3 id="answera">test</h3><br/>
-	B:<h3 id="answerb">test</h3><br/>
-	C:<h3 id="answerc">test</h3><br/>
-	D:<h3 id="answerd">test</h3><br/>
+	题目：<h3 id="title" style="word-wrap:break-word;">test</h3><br/>
+	A:<h3 id="answera" style="word-wrap:break-word;">test</h3><br/>
+	B:<h3 id="answerb" style="word-wrap:break-word;">test</h3><br/>
+	C:<h3 id="answerc" style="word-wrap:break-word;">test</h3><br/>
+	D:<h3 id="answerd" style="word-wrap:break-word;">test</h3><br/>
 	<%if(stu!=null){%>
 	您已经答过该题<br/>
 	<%}%>

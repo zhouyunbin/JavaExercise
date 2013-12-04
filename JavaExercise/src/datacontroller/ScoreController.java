@@ -58,7 +58,7 @@ public class ScoreController {
 	
 	public boolean canExam(int studentid,int examid)
 	{
-		List<Score> li=(List<Score>)(Object)MySessionFactory.executeQuery("From Score where studentid="+studentid+" and examid="+examid);
+		/*List<Score> li=(List<Score>)(Object)MySessionFactory.executeQuery("From Score where studentid="+studentid+" and examid="+examid);
 		if(li==null) return true;
 		else if(li.size()<1) return true;
 		else 
@@ -69,8 +69,9 @@ public class ScoreController {
 			Exam e=ec.getExambyId(examid);
 			if((now.getTime()-ss.getCreatetime().getTime()/(1000*60))>e.getExamtime())
 				return false;
-		}
+		}*/
 		return true;
 	
 	}
+	
 }
