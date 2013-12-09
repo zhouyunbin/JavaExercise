@@ -96,11 +96,7 @@ public class CompileAndRunJavaFile extends HttpServlet {
 				resp.getWriter().write("False");
 				return;		
 			}
-			if(!sc.canExam(stu.getStudentid(), exam.getExamid()))
-			{
-				resp.getWriter().write("False");
-				return;		
-			}
+			
 			String id=req.getParameter("codeid");
 			CodeController nc=new CodeController();
 			Code c=nc.getCodebyId(Integer.parseInt(id));
@@ -181,6 +177,14 @@ public class CompileAndRunJavaFile extends HttpServlet {
 		BufferedWriter bw = null;
 		String result="";
 		String code = req.getParameter("code");
+		if(code.indexOf("Runtime")!=-1)
+		{
+			return "forbidden";
+		}
+		if(code.indexOf("Process")!=-1)
+		{
+			return "forbidden";
+		}
 		try {
 			classStr = code.substring(code.indexOf("public class"),
 					code.indexOf("{")).toString();// 获取类名字符串

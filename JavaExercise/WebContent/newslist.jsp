@@ -18,7 +18,7 @@
 	<div style="margin:15px"> <table id="flex1" style="display:none"></table> </div>       
 	    <script type="text/javascript">
         $("#flex1").flexigrid({
-            url: '/admin/FaqHandler?cmd=list',
+            url: '/admin/NewsHandler?cmd=list',
             dataType: 'json',
             colModel: [
                        { display: '标题', name: 'title', width: 400, sortable: true, align: 'center' },
@@ -46,7 +46,7 @@
         }
         function selectAccount() {
             id = $('.trSelected').attr("id").replace("row", "");
-            window.open('/showfaq.jsp?&informno=' + id);
+            window.open('/shownews.jsp?&informno=' + id);
 
         };
         function mousechang1(p,g)

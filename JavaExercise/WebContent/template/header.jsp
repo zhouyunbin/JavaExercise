@@ -19,7 +19,7 @@
 <a href="/student/stumanage.jsp" style="float:right;margin-right:15px;color:#fff;font-size:12px;">欢迎您，<%=s.getSname() %></a>
 <%}} %>
 </div>
-<img src="/image/logo4.jpg" style="width:950px;height:150px">
+<img src="/image/logo.png" style="width:950px;">
 <div class="menu_nav clearfix">
 <ul class="nav_content">
 <li><a href="/" title="首页"><span>首页</span></a></li>
